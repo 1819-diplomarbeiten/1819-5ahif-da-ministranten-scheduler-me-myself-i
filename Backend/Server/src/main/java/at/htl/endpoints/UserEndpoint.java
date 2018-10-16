@@ -4,9 +4,7 @@ import at.htl.entities.User;
 import at.htl.facade.UserFacade;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,5 +21,22 @@ public class UserEndpoint {
         List<User> p = new LinkedList<User>();
         p.addAll(userFacade.getAllUser());
         return p;
+    }
+
+    @GET
+    @Path("{id}")
+    public User findById(@PathParam("id") int id) {
+        return userFacade.getUserById(id);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void delete(@PathParam("id") int id) {
+        userFacade.deleteUser(id);
+    }
+
+    @POST
+    public void save(User user) {
+        userFacade.updateUser(user);
     }
 }
