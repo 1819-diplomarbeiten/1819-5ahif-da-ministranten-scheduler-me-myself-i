@@ -5,9 +5,7 @@ import at.htl.entities.Appointment;
 import at.htl.facade.AppointmentFacade;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -22,5 +20,22 @@ public class AppointmentEndpoint {
     @Produces(MediaType.APPLICATION_XML)
     public List<Appointment> getAll() {
         return appointmentFacade.getAllAppointments();
+    }
+
+    @GET
+    @Path("{id}")
+    public Appointment findById(@PathParam("id") int id) {
+        return appointmentFacade.getAppointmentById(id);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void delete(@PathParam("id") int id) {
+        appointmentFacade.deleteAppointment(id);
+    }
+
+    @POST
+    public void save(Appointment appointment) {
+        appointmentFacade.updateAppointment(appointment);
     }
 }

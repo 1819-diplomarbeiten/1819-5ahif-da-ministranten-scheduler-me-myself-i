@@ -5,9 +5,7 @@ import at.htl.entities.Participant;
 import at.htl.facade.ParticipantFacade;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -22,5 +20,22 @@ public class ParticipantEndpoint {
     @Produces(MediaType.APPLICATION_XML)
     public List<Participant> getAll() {
         return participantFacade.getAllParticipant();
+    }
+
+    @GET
+    @Path("{id}")
+    public Participant findById(@PathParam("id") int id) {
+        return participantFacade.getParticipantById(id);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public void delete(@PathParam("id") int id) {
+        participantFacade.deleteParticipant(id);
+    }
+
+    @POST
+    public void save(Participant participant) {
+        participantFacade.updateParticipant(participant);
     }
 }
