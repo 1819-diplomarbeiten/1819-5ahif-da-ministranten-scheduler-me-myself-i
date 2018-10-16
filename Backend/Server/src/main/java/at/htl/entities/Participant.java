@@ -1,6 +1,7 @@
 package at.htl.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Participant.getAll",query = "select v from Participant v")
 })
+@Table(name = "PARTICIPANT_DATA")
+@XmlRootElement
 public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +23,7 @@ public class Participant {
     private Grad grad;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     private User user;
 

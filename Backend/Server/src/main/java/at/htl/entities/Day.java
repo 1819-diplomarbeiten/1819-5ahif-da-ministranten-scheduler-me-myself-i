@@ -1,6 +1,7 @@
 package at.htl.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.LinkedList;
@@ -10,12 +11,14 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Day.getAll",query = "select v from Day v")
 })
+@Table(name = "DAY_DATA")
+@XmlRootElement
 public class Day {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dayId;
 
-    private Date dayDate;
+    private LocalDateTime dayDate;
 
     private LocalDateTime available;
 
@@ -28,13 +31,18 @@ public class Day {
     public Day() {
     }
 
+    public Day(LocalDateTime dayDate, LocalDateTime available, LocalDateTime deadline) {
+        this.dayDate = dayDate;
+        this.available = available;
+        this.deadline = deadline;
+    }
 
     //Getter and Setter
     public int getDayId() {
         return dayId;
     }
 
-    public Date getDayDate() {
+    public LocalDateTime getDayDate() {
         return dayDate;
     }
 
@@ -50,7 +58,7 @@ public class Day {
         return appointmentList;
     }
 
-    public void setDayDate(Date dayDate) {
+    public void setDayDate(LocalDateTime dayDate) {
         this.dayDate = dayDate;
     }
 

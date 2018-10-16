@@ -1,6 +1,7 @@
 package at.htl.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +10,8 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Appointment.getAll",query = "select v from Appointment v")
 })
+@Table(name = "APPOINTMENT_DATA")
+@XmlRootElement
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
