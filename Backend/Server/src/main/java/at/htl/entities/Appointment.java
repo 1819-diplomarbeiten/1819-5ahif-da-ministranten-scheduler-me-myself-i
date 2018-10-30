@@ -8,7 +8,8 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Appointment.getAll",query = "select v from Appointment v")
+        @NamedQuery(name = "Appointment.getAll",query = "select v from Appointment v"),
+        @NamedQuery(name = "Appointment.getByDayId",query = "select s from Appointment s where s.day.dayId = :id")
 })
 @Table(name = "APPOINTMENT_DATA")
 @XmlRootElement
@@ -23,7 +24,7 @@ public class Appointment {
 
     private int required_Lec;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dayId")
     private Day day;
 
@@ -50,8 +51,8 @@ public class Appointment {
         return AppointmentId;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public String getTime() {
+        return time.toString();
     }
 
     public void setTime(LocalTime time) {

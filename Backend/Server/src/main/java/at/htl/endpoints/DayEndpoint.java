@@ -5,9 +5,10 @@ import at.htl.entities.Day;
 import at.htl.facade.DayFacade;
 
 import javax.inject.Inject;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("day")
 public class DayEndpoint {
@@ -17,14 +18,14 @@ public class DayEndpoint {
 
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Day> getAll() {
+    @Produces(MediaType.APPLICATION_JSON)
+    public JsonArray getAll() {
         return dayFacade.getAllDay();
     }
 
     @GET
     @Path("{id}")
-    public Day findById(@PathParam("id") int id) {
+    public JsonObject findById(@PathParam("id") int id) {
         return dayFacade.getDayById(id);
     }
 

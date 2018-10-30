@@ -74,7 +74,7 @@ public class Participant {
     }
 
     public String getGrad() {
-        return grad;
+        return grad.toString();
     }
 
     public void setGrad(Grad grad) {

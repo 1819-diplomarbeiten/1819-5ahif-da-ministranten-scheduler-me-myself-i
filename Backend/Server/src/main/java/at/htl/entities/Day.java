@@ -3,13 +3,14 @@ package at.htl.entities;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Day.getAll",query = "select v from Day v")
+        @NamedQuery(name = "Day.getAll",query = "select v from Day v"),
+        @NamedQuery(name = "Day.deleteById",query = "delete from Day v where v.dayId = :id"),
+        @NamedQuery(name = "Day.findById",query = "select v from Day v where v.dayId = :id")
 })
 @Table(name = "DAY_DATA")
 @XmlRootElement
@@ -42,16 +43,16 @@ public class Day {
         return dayId;
     }
 
-    public LocalDateTime getDayDate() {
-        return dayDate;
+    public String getDayDate() {
+        return dayDate.toString();
     }
 
-    public LocalDateTime getAvailable() {
-        return available;
+    public String getAvailable() {
+        return available.toString();
     }
 
-    public LocalDateTime getDeadline() {
-        return deadline;
+    public String getDeadline() {
+        return deadline.toString();
     }
 
     public List<Appointment> getAppointmentList() {
