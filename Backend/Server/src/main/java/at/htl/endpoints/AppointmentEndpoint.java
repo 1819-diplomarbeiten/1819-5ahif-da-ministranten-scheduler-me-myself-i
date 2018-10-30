@@ -4,14 +4,17 @@ package at.htl.endpoints;
 import at.htl.entities.Appointment;
 import at.htl.facade.AppointmentFacade;
 
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.Serializable;
 
 @Path("appointment")
-public class AppointmentEndpoint {
+@SessionScoped
+public class AppointmentEndpoint implements Serializable {
 
     @Inject
     AppointmentFacade appointmentFacade;

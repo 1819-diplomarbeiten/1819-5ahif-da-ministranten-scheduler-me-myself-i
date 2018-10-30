@@ -2,6 +2,7 @@ package at.htl.entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
 })
 @Table(name = "DAY_DATA")
 @XmlRootElement
-public class Day {
+public class Day implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int dayId;

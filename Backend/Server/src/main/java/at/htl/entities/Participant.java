@@ -2,6 +2,7 @@ package at.htl.entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 })
 @Table(name = "PARTICIPANT_DATA")
 @XmlRootElement
-public class Participant {
+public class Participant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int participantId;

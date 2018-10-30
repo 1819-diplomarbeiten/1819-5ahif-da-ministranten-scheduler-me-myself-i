@@ -8,10 +8,11 @@ import javax.ejb.Stateless;
 import javax.json.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class ParticipantFacade {
+public class ParticipantFacade implements Serializable {
 
     @PersistenceContext
     EntityManager entityManager;

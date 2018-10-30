@@ -4,14 +4,17 @@ package at.htl.endpoints;
 import at.htl.entities.Day;
 import at.htl.facade.DayFacade;
 
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.Serializable;
 
 @Path("day")
-public class DayEndpoint {
+@SessionScoped
+public class DayEndpoint implements Serializable {
 
     @Inject
     DayFacade dayFacade;

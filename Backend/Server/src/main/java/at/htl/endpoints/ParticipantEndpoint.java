@@ -4,22 +4,24 @@ package at.htl.endpoints;
 import at.htl.entities.Participant;
 import at.htl.facade.ParticipantFacade;
 
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+import java.io.Serializable;
 
 @Path("participant")
-public class ParticipantEndpoint {
+@SessionScoped
+public class ParticipantEndpoint implements Serializable {
 
     @Inject
     ParticipantFacade participantFacade;
 
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public JsonArray getAll() {
         return participantFacade.getAllParticipant();
     }

@@ -7,10 +7,11 @@ import javax.ejb.Stateless;
 import javax.json.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
 import java.util.List;
 
 @Stateless
-public class DayFacade {
+public class DayFacade implements Serializable {
 
     @PersistenceContext
     EntityManager entityManager;
