@@ -16,6 +16,7 @@ public class DayFacade {
     EntityManager entityManager;
 
 
+    //return a JsonArray to the Rest Endpoint
     public JsonArray getAllDay() {
         List<Day> days = entityManager.createNamedQuery("Day.getAll", Day.class).getResultList();
         JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
@@ -41,7 +42,7 @@ public class DayFacade {
         this.entityManager.createNamedQuery("Day.deleteById",Day.class).setParameter("id",id).executeUpdate();
     }
 
-    //build a JsonObject per user
+    //build a JsonObject per Day
     private JsonObject buildSimpleDayJson(Day day) {
         JsonObjectBuilder userBuilder = Json.createObjectBuilder();
         return fillSimpleDayBuilder(userBuilder, day).build();
@@ -56,7 +57,7 @@ public class DayFacade {
                 .add("appointments",fillSimpleAppointmentsToDayBuilder(day));
     }
 
-    //build the Participant for every User to an JsonArray //noch nicht fix
+    //build the Participant for every Day to an JsonArray //noch nicht fix
     private JsonArray fillSimpleAppointmentsToDayBuilder(Day day) {
         List<Appointment> appointments = entityManager
                 .createNamedQuery("Appointment.getByDayId", Appointment.class)

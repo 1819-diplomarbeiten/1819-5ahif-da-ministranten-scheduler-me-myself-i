@@ -17,6 +17,7 @@ public class ParticipantFacade {
     EntityManager entityManager;
 
 
+    //return a JsonArray to the Rest Endpoint
     public JsonArray getAllParticipant() {
         List<Participant> participants = entityManager.createNamedQuery("Participant.getAll", Participant.class).getResultList();
         JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
@@ -43,7 +44,7 @@ public class ParticipantFacade {
     }
 
 
-
+    //converting into Json
     private JsonObject buildSimpleParticipantJson(Participant participant) {
         JsonObjectBuilder userBuilder = Json.createObjectBuilder();
         return fillSimpleParticipantBuilder(userBuilder, participant).build();

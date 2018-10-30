@@ -9,14 +9,16 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Appointment.getAll",query = "select v from Appointment v"),
-        @NamedQuery(name = "Appointment.getByDayId",query = "select s from Appointment s where s.day.dayId = :id")
+        @NamedQuery(name = "Appointment.getByDayId",query = "select v from Appointment v where v.day.dayId = :id"),
+        @NamedQuery(name = "Appointment.getById",query = "select v from Appointment v where v.appointmentId = :id"),
+        @NamedQuery(name = "Appointment.deleteById",query = "delete from Appointment v where v.appointmentId = :id")
 })
 @Table(name = "APPOINTMENT_DATA")
 @XmlRootElement
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int AppointmentId;
+    private int appointmentId;
 
     private LocalTime time;
 
@@ -48,7 +50,7 @@ public class Appointment {
 
     //Getter Setter
     public int getAppointmentId() {
-        return AppointmentId;
+        return appointmentId;
     }
 
     public String getTime() {

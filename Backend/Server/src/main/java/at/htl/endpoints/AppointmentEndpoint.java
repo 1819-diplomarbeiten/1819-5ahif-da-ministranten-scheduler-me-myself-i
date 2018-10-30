@@ -5,9 +5,10 @@ import at.htl.entities.Appointment;
 import at.htl.facade.AppointmentFacade;
 
 import javax.inject.Inject;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("appointment")
 public class AppointmentEndpoint {
@@ -18,13 +19,13 @@ public class AppointmentEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Appointment> getAll() {
+    public JsonArray getAll() {
         return appointmentFacade.getAllAppointments();
     }
 
     @GET
     @Path("{id}")
-    public Appointment findById(@PathParam("id") int id) {
+    public JsonObject findById(@PathParam("id") int id) {
         return appointmentFacade.getAppointmentById(id);
     }
 
