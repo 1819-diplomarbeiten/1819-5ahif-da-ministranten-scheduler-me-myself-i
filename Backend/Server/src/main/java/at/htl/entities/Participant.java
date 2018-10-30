@@ -8,7 +8,9 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Participant.getAll",query = "select v from Participant v"),
-        @NamedQuery(name = "Participant.getByUserId",query = "select s from Participant s where s.user.userId = :id")
+        @NamedQuery(name = "Participant.getByUserId",query = "select v from Participant v where v.user.userId = :id"),
+        @NamedQuery(name = "Participant.deleteById",query = "delete from Participant v where v.participantId = :id"),
+        @NamedQuery(name = "Participant.getById",query = "select v from Participant v where v.participantId = :id")
 })
 @Table(name = "PARTICIPANT_DATA")
 @XmlRootElement

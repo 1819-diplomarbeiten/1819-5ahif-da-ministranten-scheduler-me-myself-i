@@ -28,7 +28,7 @@ public class UserFacade implements Serializable {
     }
 
     public JsonObject getUserById(int id) {
-        return buildSimpleUserJson(entityManager.createNamedQuery("User.findById",User.class).getSingleResult());
+        return buildSimpleUserJson(entityManager.createNamedQuery("User.findById",User.class).setParameter("id",id).getSingleResult());
     }
 
     public void updateUser(User user) {

@@ -5,6 +5,8 @@ import at.htl.entities.Participant;
 import at.htl.facade.ParticipantFacade;
 
 import javax.inject.Inject;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -18,13 +20,13 @@ public class ParticipantEndpoint {
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Participant> getAll() {
+    public JsonArray getAll() {
         return participantFacade.getAllParticipant();
     }
 
     @GET
     @Path("{id}")
-    public Participant findById(@PathParam("id") int id) {
+    public JsonObject findById(@PathParam("id") int id) {
         return participantFacade.getParticipantById(id);
     }
 
