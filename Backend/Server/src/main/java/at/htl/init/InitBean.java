@@ -37,11 +37,13 @@ public class InitBean {
     public void init() {
 
         User u = new User("as12df34","Hallo","pasdfjkla@gmail.com",06676767,7466886,false,false);
-        Participant p = new Participant("patrick","mistlberger",Grad.Ministrant,u);
+        Participant p = new Participant("patrick","mistlberger",Grad.Ministrant);
+        u.addParticipants(p);
         Day d = new Day(LocalDateTime.now(),LocalDateTime.now(),LocalDateTime.now());
         Appointment a = new Appointment(LocalTime.now(),5,5,d);
-        uf.createUser(u);
+
         pf.createParticipant(p);
+        uf.createUser(u);
         df.createDay(d);
         af.createAppointment(a);
     }

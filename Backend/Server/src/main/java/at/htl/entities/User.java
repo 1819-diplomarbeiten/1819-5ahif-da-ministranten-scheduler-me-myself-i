@@ -3,6 +3,7 @@ package at.htl.entities;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 })
 @Table(name = "USER_DATA")
 @XmlRootElement
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
@@ -50,7 +51,6 @@ public class User {
         this.phoneNumberSec = phoneNumberSec;
         this.whats_App_re = whats_App_re;
         this.e_Mail_re = e_Mail_re;
-        this.participantList = null;
     }
 
     //Getter Setter
@@ -120,5 +120,15 @@ public class User {
 
     public void setParticipantList(List<Participant> participantList) {
         this.participantList = participantList;
+    }
+
+    public void addParticipants(Participant participant) {
+        participantList.add(participant);
+        participant.setUser(this);
+    }
+
+    public void removeParticipant(Participant participant) {
+        participantList.remove(participant);
+        participant.setUser(null);
     }
 }

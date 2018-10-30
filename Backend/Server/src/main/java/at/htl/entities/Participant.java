@@ -7,7 +7,8 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Participant.getAll",query = "select v from Participant v")
+        @NamedQuery(name = "Participant.getAll",query = "select v from Participant v"),
+        @NamedQuery(name = "Participant.getByUserId",query = "select s from Participant s where s.user.userId = :id")
 })
 @Table(name = "PARTICIPANT_DATA")
 @XmlRootElement
@@ -42,11 +43,10 @@ public class Participant {
     public Participant() {
     }
 
-    public Participant(String firstName, String lastName, Grad grad, User user) {
+    public Participant(String firstName, String lastName, Grad grad) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.grad = grad;
-        this.user = user;
     }
 
 
