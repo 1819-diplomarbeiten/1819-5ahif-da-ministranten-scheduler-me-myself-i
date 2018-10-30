@@ -21,7 +21,7 @@ public class AppointmentEndpoint implements Serializable {
 
 
     @GET
-    @Produces(MediaType.APPLICATION_XML)
+    @Produces(MediaType.APPLICATION_JSON)
     public JsonArray getAll() {
         return appointmentFacade.getAllAppointments();
     }
