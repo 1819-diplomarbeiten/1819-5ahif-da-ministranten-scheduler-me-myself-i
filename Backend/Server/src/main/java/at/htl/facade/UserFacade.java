@@ -27,8 +27,8 @@ public class UserFacade implements Serializable {
         return jsonArrayBuilder.build();
     }
 
-    public User getUserById(int id) {
-        return entityManager.find(User.class, id);
+    public JsonObject getUserById(int id) {
+        return buildSimpleUserJson(entityManager.createNamedQuery("User.findById",User.class).getSingleResult());
     }
 
     public void updateUser(User user) {
@@ -40,7 +40,7 @@ public class UserFacade implements Serializable {
     }
 
     public void deleteUser(int id) {
-        this.entityManager.remove(entityManager.find(User.class, id));
+        this.entityManager.createNamedQuery("User.deleteById",User.class).setParameter("id",id).executeUpdate();
     }
 
 
@@ -63,7 +63,7 @@ public class UserFacade implements Serializable {
                 .add("participants",fillSimpleParticipantsToUserBuilder(user));
     }
 
-    //build the Participant for every User to an JsonArray
+    //build the Participant for every User to an JsonArray //noch nicht fix
     private JsonArray fillSimpleParticipantsToUserBuilder(User user) {
         List<Participant> participants = entityManager
                 .createNamedQuery("Participant.getByUserId", Participant.class)
@@ -76,7 +76,7 @@ public class UserFacade implements Serializable {
                             .add("id", p.getParticipantId())
                             .add("first_name", p.getFirstName())
                             .add("last_name", p.getLastName())
-                            .add("grad", p.getGrad().toString())).build();
+                            .add("grad", p.getGrad())).build();
         }
         return jsonArrayBuilder.build();
     }

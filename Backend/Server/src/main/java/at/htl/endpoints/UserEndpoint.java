@@ -6,11 +6,10 @@ import at.htl.facade.UserFacade;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.json.JsonArray;
+import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
 
 @Path("user")
 @SessionScoped
@@ -27,7 +26,7 @@ public class UserEndpoint implements Serializable {
 
     @GET
     @Path("{id}")
-    public User findById(@PathParam("id") int id) {
+    public JsonObject findById(@PathParam("id") int id) {
         return userFacade.getUserById(id);
     }
 

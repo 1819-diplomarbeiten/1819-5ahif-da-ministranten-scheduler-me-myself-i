@@ -9,7 +9,9 @@ import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "User.getAll",query = "select v from User v")
+        @NamedQuery(name = "User.getAll",query = "select v from User v"),
+        @NamedQuery(name = "User.deleteById",query = "delete from User v where v.userId = :id"),
+        @NamedQuery(name = "User.findById",query = "select v from User v where v.userId = :id")
 })
 @Table(name = "USER_DATA")
 @XmlRootElement

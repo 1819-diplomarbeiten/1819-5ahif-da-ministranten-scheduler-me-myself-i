@@ -73,7 +73,7 @@ public class Participant {
         this.lastName = lastName;
     }
 
-    public Grad getGrad() {
+    public String getGrad() {
         return grad;
     }
 
