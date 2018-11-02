@@ -6,13 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8060bf4a-b3b3-421f-9618-f79857611870" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Arbeitszeit.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arbeitszeit.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f30bfb10-1928-4c3a-b5f0-ee51672a5b93.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f30bfb10-1928-4c3a-b5f0-ee51672a5b93.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8060bf4a-b3b3-421f-9618-f79857611870" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -365,7 +359,7 @@
       <workItem from="1539948335872" duration="925000" />
       <workItem from="1539950785827" duration="4545000" />
       <workItem from="1540852166808" duration="14806000" />
-      <workItem from="1541006836819" duration="1863000" />
+      <workItem from="1541006836819" duration="1969000" />
     </task>
     <task id="LOCAL-00001" summary="Entity erstellt nächster Schritt Assoziationen vergeben">
       <created>1539442838213</created>
@@ -385,7 +379,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44707000" />
+    <option name="totallyTimeSpent" value="44813000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
