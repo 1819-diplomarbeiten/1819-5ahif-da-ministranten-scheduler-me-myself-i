@@ -88,7 +88,7 @@ public class User implements Serializable {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -96,7 +96,7 @@ public class User implements Serializable {
         return phoneNumberSec;
     }
 
-    public void setPhoneNumberSec(int phoneNumberSec) {
+    public void setPhoneNumberSec(long phoneNumberSec) {
         this.phoneNumberSec = phoneNumberSec;
     }
 
