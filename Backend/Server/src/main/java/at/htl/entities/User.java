@@ -1,17 +1,21 @@
 package at.htl.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "User.getAll",query = "select v from User v")
+        @NamedQuery(name = "User.getAll",query = "select v from User v"),
+        @NamedQuery(name = "User.deleteById",query = "delete from User v where v.userId = :id"),
+        @NamedQuery(name = "User.findById",query = "select v from User v where v.userId = :id")
 })
 @Table(name = "USER_DATA")
 @XmlRootElement
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
@@ -20,6 +24,10 @@ public class User {
 
     private String u_Password;
 
+    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+            +"[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+            +"(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+            message="{invalid.email}")
     private String e_Mail;
 
     private long phoneNumber;
@@ -45,7 +53,6 @@ public class User {
         this.phoneNumberSec = phoneNumberSec;
         this.whats_App_re = whats_App_re;
         this.e_Mail_re = e_Mail_re;
-        this.participantList = null;
     }
 
     //Getter Setter
@@ -81,7 +88,7 @@ public class User {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -89,7 +96,7 @@ public class User {
         return phoneNumberSec;
     }
 
-    public void setPhoneNumberSec(int phoneNumberSec) {
+    public void setPhoneNumberSec(long phoneNumberSec) {
         this.phoneNumberSec = phoneNumberSec;
     }
 
@@ -115,5 +122,15 @@ public class User {
 
     public void setParticipantList(List<Participant> participantList) {
         this.participantList = participantList;
+    }
+
+    public void addParticipants(Participant participant) {
+        participantList.add(participant);
+        participant.setUser(this);
+    }
+
+    public void removeParticipant(Participant participant) {
+        participantList.remove(participant);
+        participant.setUser(null);
     }
 }

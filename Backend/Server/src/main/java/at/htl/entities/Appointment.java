@@ -2,20 +2,24 @@ package at.htl.entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Appointment.getAll",query = "select v from Appointment v")
+        @NamedQuery(name = "Appointment.getAll",query = "select v from Appointment v"),
+        @NamedQuery(name = "Appointment.getByDayId",query = "select v from Appointment v where v.day.dayId = :id"),
+        @NamedQuery(name = "Appointment.getById",query = "select v from Appointment v where v.appointmentId = :id"),
+        @NamedQuery(name = "Appointment.deleteById",query = "delete from Appointment v where v.appointmentId = :id")
 })
 @Table(name = "APPOINTMENT_DATA")
 @XmlRootElement
-public class Appointment {
+public class Appointment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int AppointmentId;
+    private int appointmentId;
 
     private LocalTime time;
 
@@ -23,7 +27,7 @@ public class Appointment {
 
     private int required_Lec;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dayId")
     private Day day;
 
@@ -47,11 +51,11 @@ public class Appointment {
 
     //Getter Setter
     public int getAppointmentId() {
-        return AppointmentId;
+        return appointmentId;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public String getTime() {
+        return time.toString();
     }
 
     public void setTime(LocalTime time) {

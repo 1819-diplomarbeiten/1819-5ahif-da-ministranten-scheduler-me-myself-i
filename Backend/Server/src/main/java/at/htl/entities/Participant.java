@@ -2,16 +2,20 @@ package at.htl.entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Participant.getAll",query = "select v from Participant v")
+        @NamedQuery(name = "Participant.getAll",query = "select v from Participant v"),
+        @NamedQuery(name = "Participant.getByUserId",query = "select v from Participant v where v.user.userId = :id"),
+        @NamedQuery(name = "Participant.deleteById",query = "delete from Participant v where v.participantId = :id"),
+        @NamedQuery(name = "Participant.getById",query = "select v from Participant v where v.participantId = :id")
 })
 @Table(name = "PARTICIPANT_DATA")
 @XmlRootElement
-public class Participant {
+public class Participant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int participantId;
@@ -42,11 +46,10 @@ public class Participant {
     public Participant() {
     }
 
-    public Participant(String firstName, String lastName, Grad grad, User user) {
+    public Participant(String firstName, String lastName, Grad grad) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.grad = grad;
-        this.user = user;
     }
 
 
@@ -73,8 +76,8 @@ public class Participant {
         this.lastName = lastName;
     }
 
-    public Grad getGrad() {
-        return grad;
+    public String getGrad() {
+        return grad.toString();
     }
 
     public void setGrad(Grad grad) {
