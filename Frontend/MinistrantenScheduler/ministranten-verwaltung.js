@@ -12,6 +12,7 @@ class MinistrantenVerwaltung extends LitElement {
   render() {
     return html`
       <div id="components">
+        <!--<church-event-component></church-event-component>-->
         <login-component></login-component>
       </div>
     `;

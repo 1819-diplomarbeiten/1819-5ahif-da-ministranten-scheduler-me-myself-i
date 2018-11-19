@@ -7,8 +7,13 @@ export class Login extends LitElement{
 	<script lang="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script lang="javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="/src/components/Login/designInput/images/icons/favicon.ico"/>
+	<!--<link rel="icon" type="image/png" href="/src/components/Login/designInput/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
+
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/src/components/Login/designInput/images/icons/bible.png"/>
+<!--===============================================================================================-->
+
 	<link rel="stylesheet" type="text/css" href="/src/components/Login/designInput/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/src/components/Login/designInput/fonts/iconic/css/material-design-iconic-font.min.css">
@@ -27,7 +32,7 @@ export class Login extends LitElement{
 	<link rel="stylesheet" type="text/css" href="/src/components/Login/designInput/css/main.css">
 <!--===============================================================================================-->	
 	<div class="limiter">
-		<div class="container-login100 background_size">
+		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					<span class="login100-form-logo">
@@ -68,10 +73,13 @@ export class Login extends LitElement{
 					</div>
 				</form>
 			</div>
+			
 		</div>
+		
 	</div>
 	
 
+    
 	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
@@ -104,3 +112,10 @@ export class Login extends LitElement{
     }
 }
 window.customElements.define("login-component",Login);
+
+
+
+//importent for icon
+//<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a>
+// from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by
+// <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
