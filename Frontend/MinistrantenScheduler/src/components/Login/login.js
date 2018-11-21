@@ -2,6 +2,38 @@ import {html, LitElement} from '@polymer/lit-element';
 
 
 export class Login extends LitElement{
+
+
+    checkLogin() {
+        console.log("click event login"+password);
+    }
+
+    static get properties() {
+        return{
+            userName : String,
+            password : Number
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     render() {
         return html`
 	<script lang="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -98,17 +130,6 @@ export class Login extends LitElement{
 	<script src="styles.css"></script>
 	
         `;
-    }
-
-    checkLogin() {
-        console.log("click event login"+password);
-    }
-
-    static get properties() {
-        return{
-            userName : String,
-            password : Number
-        }
     }
 }
 window.customElements.define("login-component",Login);

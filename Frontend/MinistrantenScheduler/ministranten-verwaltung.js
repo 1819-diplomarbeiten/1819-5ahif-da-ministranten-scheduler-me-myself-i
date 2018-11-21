@@ -14,10 +14,10 @@ class MinistrantenVerwaltung extends LitElement {
       <div id="components">
         <!--<church-event-component></church-event-component>-->
         <church-event-component></church-event-component>
+        <!--<participant-component></participant-component>-->
       </div>
     `;
   }
-
 }
 
 window.customElements.define('ministranten-verwaltung', MinistrantenVerwaltung);

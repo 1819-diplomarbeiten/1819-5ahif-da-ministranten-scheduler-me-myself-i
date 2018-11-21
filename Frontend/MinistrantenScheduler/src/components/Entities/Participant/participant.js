@@ -2,7 +2,7 @@ import {LitElement,html} from '@polymer/lit-element';
 
 export class Participant extends LitElement{
 
-    static get porperties() {
+    static get properties() {
         return {
             participantId: Number,
             firstName: String,
@@ -19,14 +19,41 @@ export class Participant extends LitElement{
         return this.participantId
     }
 
+
+    fillParticipant(participant) {
+        console.log("in filler methode");
+        this.participantId = participant.participantId;
+        console.log(this.participantId);
+        this.firstName = participant.firstName;
+        this.lastName = participant.lastName;
+        this.grad = participant.grad;
+    }
+
+    loadParticipant(){
+        let label = this.shadowRoot.getElementById('participant')
+        label.innerHTML = this.firstName + " " + this.lastName
+    }
+
     render() {
+        $(document).ready(() => {
+            this.loadParticipant();
+        });
         return html`
-        <script src="styles.css"></script>
+        <script lang="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script lang="javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
-        <div class="rectangle">
-            <label class="font-styles" content="${this.firstName} ${this.lastName}"></label>
+        <link rel="stylesheet" type="text/css" href="/src/components/Entities/Participant/styles.css">
+        
+        <br>
+        <div class="col-sm-3">
+            <div class="col-sm-11">
+                <div class="rectangle rcconers">
+                    <label id="participant" class="font-styles100"></label>
+                </div>
+            </div>
         </div>
         `;
     }
 }
-window.customElements.define("participant-component",Participant);
+//window.customElements.define("participant-component",Participant);

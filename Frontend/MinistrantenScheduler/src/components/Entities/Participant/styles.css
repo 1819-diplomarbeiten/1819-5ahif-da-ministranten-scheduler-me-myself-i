@@ -1,9 +1,19 @@
 .rectangle{
-    height: 60px;
-    width: 150px;
+    height: 30px;
+    width: auto;
     background-color: #856404;
+    text-align: center;
+    vertical-align: center;
 }
-.font-styles{
+
+.rcconers {
+    border-radius: 15px;
+    border: 6px;
+}
+
+
+.font-styles100{
     color: white;
-    font-size: 18px;
+    font-size: 12px;
+    padding: 6px;
 }
