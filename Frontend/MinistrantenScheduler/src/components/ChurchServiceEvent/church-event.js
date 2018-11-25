@@ -1,25 +1,26 @@
 import {html, LitElement} from '@polymer/lit-element';
-import {HtmlClient} from '../../services/HtmlClientService/html-client';
-import {Participant} from "../../../build/default/src/components/Entities/Participant/participant";
+import {HtmlService} from '../../services/HtmlClientService/html-service';
+import {Participant} from "../Entities/Participant/participant";
+
 
 
 var datts;
 export class ChurchServiceEvent extends LitElement{
     constructor() {
         super();
-        datts = this.getData();
+        datts = HtmlService.getAllParticipant()
         let i = datts[1];
         console.log(i.firstName);
         console.log(datts.length);
     }
 
-    static get properties() {
+    /*static get properties() {
         console.log("properties geht");
         return{
             participants: Array,
             client: HtmlClient
         };
-    }
+    }*/
 
 
 
@@ -27,54 +28,39 @@ export class ChurchServiceEvent extends LitElement{
         console.log("test church-event")
         let minis = this.shadowRoot.getElementById("Minis")
         for(var i = 0;i < datts.length;i++){
-            //HtmlClient.getAllParticipant()
-            var input = Object;
+            let input = new Participant();
+            Object.assign(input, datts[i]);
 
-            input.fillParticipant(datts[i]);
+            //let inp;
+            //inp.fillParticipant(datts[i]);
+            //console.log(inp.firstName)
             //input.fillParticipant(datts[i]);
-            console.log(input.firstName);
-            //minis.innerHTML = input;
+
+            console.log(i+' '+input.firstName);
+            minis.innerHTML += `<participant-component></participant-component><br>`;
         }
     }
 
-    getData(){
-        var data =
-            [
-                {
-                    participantId: 1,
-                    lastName: "Herbert",
-                    firstName: "Franz",
-                    grad: "Ministrant"
-                },
-                {
-                    participantId: 2,
-                    firstName: "Max",
-                    lastName: "Mustermann",
-                    grad: "Ministrant"
-                },
-                {
-                    participantId: 3,
-                    firstName: "Lisa",
-                    lastName: "Hermann",
-                    grad: "Ministrant"
-                },
-                {
-                    participantId: 4,
-                    firstName: "Franz",
-                    lastName: "Buschmann",
-                    grad: "Ministrant"
-                }
-            ]
-        return data;
+    singleTest() {
+        let input = new Participant();
+        input = datts[0];
+
+        console.log("single Test "+input.firstName);
+        let minis = this.shadowRoot.getElementById("Minis");
+        minis.innerHTML = input;
+        console.log("single Test success")
     }
+
+
 
     render() {
         $(document).ready(() =>{
-            this.test();
+            this.singleTest();
         });
 
         console.log("geht in render");
         return html`
+        
         <div>
             <h1>New Page</h1>
         </div>  
@@ -84,6 +70,5 @@ export class ChurchServiceEvent extends LitElement{
         </div>  
         `;
     }
-
 }
 window.customElements.define('church-event-component',ChurchServiceEvent);

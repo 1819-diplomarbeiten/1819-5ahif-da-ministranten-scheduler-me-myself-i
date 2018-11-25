@@ -3,6 +3,7 @@ import {LitElement,html} from '@polymer/lit-element';
 export class Participant extends LitElement{
 
     static get properties() {
+        //console.log("participant prop")
         return {
             participantId: Number,
             firstName: String,
@@ -13,6 +14,9 @@ export class Participant extends LitElement{
 
     constructor() {
         super();
+        //this.firstName = "herbert";
+        //this.lastName = "Franz";
+        console.log("constructor participant")
     }
 
     getParticipantId() {
@@ -30,7 +34,7 @@ export class Participant extends LitElement{
     }
 
     loadParticipant(){
-        let label = this.shadowRoot.getElementById('participant')
+        let label = this.shadowRoot.getElementById('participant');
         label.innerHTML = this.firstName + " " + this.lastName
     }
 
@@ -43,11 +47,11 @@ export class Participant extends LitElement{
         <script lang="javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
+        
         <link rel="stylesheet" type="text/css" href="/src/components/Entities/Participant/styles.css">
         
-        <br>
         <div class="col-sm-3">
-            <div class="col-sm-11">
+            <div class="col-sm-8">
                 <div class="rectangle rcconers">
                     <label id="participant" class="font-styles100"></label>
                 </div>
@@ -56,4 +60,4 @@ export class Participant extends LitElement{
         `;
     }
 }
-//window.customElements.define("participant-component",Participant);
+window.customElements.define("participant-component",Participant);
