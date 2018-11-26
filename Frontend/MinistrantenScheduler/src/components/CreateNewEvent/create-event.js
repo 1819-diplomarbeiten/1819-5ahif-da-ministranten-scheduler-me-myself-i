@@ -5,7 +5,8 @@ export class CreateNewEvent extends LitElement{
     static get properties() {
         return{
             anzahl: Number,
-            realAnzahl: Number
+            realAnzahl: Number,
+            test: String
         }
     }
 
@@ -13,8 +14,10 @@ export class CreateNewEvent extends LitElement{
         super();
         this.anzahl = new Number();
         this.realAnzahl = new Number();
+        this.test = "Hallo";
         this.anzahl = 0;
         this.realAnzahl = 0;
+
     }
 
     addEventParticipant() {
@@ -38,6 +41,7 @@ export class CreateNewEvent extends LitElement{
     }
 
 
+    /**********************************************Participant-Layout**************************************************/
     getParticipantLayout() {
         return `<br>
             <div>
@@ -66,7 +70,7 @@ export class CreateNewEvent extends LitElement{
             </div>
             <hr>`
     }
-
+    /**********************************************Participant-Layout**************************************************/
 
 
 
@@ -82,9 +86,7 @@ export class CreateNewEvent extends LitElement{
         
         
         <div class="col-md-4">
-            <div class="button-return">
-                <button  style="width: 40px; height: 40px "></button>
-            </div>
+            <span id="testis"></span>
         </div>
         <div class="col-md-6 row">
             <h1>Neuer User anlegen</h1>

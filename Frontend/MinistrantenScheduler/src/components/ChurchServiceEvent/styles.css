@@ -1,0 +1,30 @@
+.vertic-line {
+    border-left: 6px solid gray;
+    height: 650px;
+}
+.rectangle-Part{
+    height: 30px;
+    width: auto;
+    background-color: #856404;
+    text-align: center;
+    vertical-align: center;
+}
+.rcconers {
+    border-radius: 15px;
+    border: 6px;
+}
+.font-styles-Part{
+    color: white;
+    font-size: 12px;
+    padding: 6px;
+}
+.rectangle-Appo {
+    height: 300px;
+    width: 300px;
+    background-color: #abdde5;
+}
+.font-header-style {
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+}

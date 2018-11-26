@@ -1,6 +1,5 @@
 import {LitElement,html} from '@polymer/lit-element';
 
-
 export class CreateNewChurchEvent extends LitElement{
 
     static get properties() {
@@ -36,6 +35,7 @@ export class CreateNewChurchEvent extends LitElement{
     }
 
 
+    /**********************************************Appointment-Layout**************************************************/
     getAppointmentsLayout() {
         return `<br>
             <div>
@@ -59,7 +59,7 @@ export class CreateNewChurchEvent extends LitElement{
             <hr>
             `;
     }
-
+    /**********************************************Appointment-Layout**************************************************/
 
     render() {
         return html`

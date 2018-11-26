@@ -27,6 +27,12 @@ export class HtmlService{
                     firstName: "Franz",
                     lastName: "Buschmann",
                     grad: "Ministrant"
+                },
+                {
+                    participantId: 5,
+                    firstName: "Patrick",
+                    lastName: "Mistlberger",
+                    grad: "Ministrant"
                 }
             ]
         return datas;
