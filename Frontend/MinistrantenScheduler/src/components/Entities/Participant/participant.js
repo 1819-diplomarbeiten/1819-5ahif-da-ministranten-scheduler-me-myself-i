@@ -3,18 +3,17 @@ import {LitElement} from '@polymer/lit-element';
 export class Participant extends LitElement{
 
     static get properties() {
-        //console.log("participant prop")
         return {
             participantId: Number,
             firstName: String,
             lastName: String,
-            grad: String
+            grad: String,
+            userId: Number
         }
     }
 
     constructor() {
         super();
-        console.log("constructor participant")
     }
 
     getParticipantId() {
