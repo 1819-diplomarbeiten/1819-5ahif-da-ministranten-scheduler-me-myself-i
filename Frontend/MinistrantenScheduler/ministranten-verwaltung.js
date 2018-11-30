@@ -16,8 +16,7 @@ class MinistrantenVerwaltung extends LitElement {
         <!--<login-component></login-component>-->
         <!--<create-event-component></create-event-component>-->
         <!--<create-church-event-component></create-church-event-component>-->
-        <!--<user-settings-component></user-settings-component>-->
-        <login-component></login-component>
+        <user-settings-component></user-settings-component>
       </div>
     `;
   }

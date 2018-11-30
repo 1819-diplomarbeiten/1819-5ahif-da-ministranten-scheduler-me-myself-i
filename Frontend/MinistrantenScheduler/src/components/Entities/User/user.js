@@ -1,4 +1,4 @@
-import {LitElement,html} from '@polymer/lit-element';
+import {LitElement} from '@polymer/lit-element';
 
 export class User extends LitElement{
     static get properties() {
@@ -7,11 +7,16 @@ export class User extends LitElement{
             userName: String,
             password: String,
             email: String,
-            phoneNumber: BigInt,
-            secPhoneNumber: BigInt,
+            phoneNumber: Number,
+            secPhoneNumber: Number,
             whatsAppRe: Boolean,
             emailRe: Boolean,
             participants: Array
         }
     }
+
+    constructor() {
+        super();
+    }
 }
+window.customElements.define('user-component',User)
