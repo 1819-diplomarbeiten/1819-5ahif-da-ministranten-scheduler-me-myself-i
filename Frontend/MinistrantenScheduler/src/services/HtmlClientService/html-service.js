@@ -96,6 +96,13 @@ export class HtmlService{
                         lastName: "Buschmann",
                         grad: "Ministrant",
                         userId: 2
+                    },
+                    {
+                        participantId: 6,
+                        firstName: "Herbst",
+                        lastName: "Summer",
+                        grad: "Ministrant",
+                        userId: 2
                     }
                 ]
             },
