@@ -1,3 +1,5 @@
+import {User} from "../../components/Entities/User/user";
+
 var datas = [];
 var prop = [];
 export class HtmlService{
@@ -127,5 +129,11 @@ export class HtmlService{
             }
         ];
         return prop;
+    }
+
+    static getUserById(its) {
+        let ist = new User()
+        ist = prop.find(item => item.userId == its)
+        return ist
     }
 }
