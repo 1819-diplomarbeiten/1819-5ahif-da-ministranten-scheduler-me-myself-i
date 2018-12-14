@@ -1,6 +1,7 @@
 import {LitElement,html} from '@polymer/lit-element';
 import {HtmlService} from "../../services/HtmlClientService/html-service";
 import { repeat } from "@polymer/lit-element/node_modules/lit-html/directives/repeat.js";
+import {Participant} from "../Entities/Participant/participant";
 
 export class ParticipantSettings extends LitElement{
 
@@ -10,21 +11,23 @@ export class ParticipantSettings extends LitElement{
             allParticipants: {
                 type: Array
             },
-            normal:String
+            selectedParticipant: Participant
         }
     }
 
     constructor() {
         super();
-        this.allParticipants = HtmlService.getAllParticipant()
-        console.log(this.allParticipants.length)
-        this.normal = "Hallo"
+        this.allParticipants = HtmlService.getAllParticipant();
+        //this.selectedParticipant = new Participant();
+
     }
 
-
-    setTest(input,id) {
-        console.log(input+' '+id)
+    setForm(input) {
+        this.selectedParticipant = input;
+        console.log("click");
     }
+
+    
 
 
     render() {
@@ -52,9 +55,9 @@ export class ParticipantSettings extends LitElement{
                             <td>zugewisene User</td>
                         </tr>
                     </thead>
-                    <tbody id="participants">
+                    <tbody>
                     ${repeat(this.allParticipants,(item) => html`
-                                                        <tr @click="${() => this.setTest(item.firstName,item.participantId)}">
+                                                        <tr @click="${() => this.setForm(item)}">
                                                             <td><input class="input-checkbox" id="picker" type="checkbox" name="chooser"></td>
                                                             <td>${item.firstName}</td>
                                                             <td>${item.lastName}</td>
@@ -67,8 +70,20 @@ export class ParticipantSettings extends LitElement{
             <div class="col-sm-4 form-border">
                 <form class="login-form validate-input">
                     <div class="div-form">
+                        <label>Vorname:</label>
+                        <input id="firstName" type="text" class="form-control" value="${this.selectedParticipant== null ?  " " :  this.selectedParticipant.firstName}">
+                    </div>
+                    <div class="div-form">
+                        <label>Nachname:</label>
+                        <input id="lastName" type="text" class="form-control" value="${this.selectedParticipant == null ? " " : this.selectedParticipant.lastName}">
+                    </div>
+                    <div class="div-form">
+                        <label>Kreis:</label>
+                        <input id="grad" type="text" class="form-control" value="${this.selectedParticipant == null ? " " : this.selectedParticipant.grad}">
+                    </div>
+                    <div class="div-form">
                         <label>User:</label>
-                        <input id="userName" type="text" class="form-control" value="">
+                        <input id="userName" type="text" class="form-control" value="${this.selectedParticipant == null ? " " : this.selectedParticipant.userId}">
                     </div>
                 </form>
             </div>
