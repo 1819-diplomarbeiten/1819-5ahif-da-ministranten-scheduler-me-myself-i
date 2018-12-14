@@ -1,11 +1,13 @@
 {
   "name": "ministranten-verwaltung",
+  "flat": true,
   "description": "Erleichterung für Ministranten zum Eintragen ihres Unterrichts",
   "main": "ministranten-verwaltung.js",
   "dependencies": {
     "@polymer/lit-element": "^0.6.3",
     "bootstrap": "^4.0.0",
     "jquery": "^3.3.1",
+    "lit-html": "^0.14.0",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "polymer-analyzer": "^3.1.3",
     "popper.js": "^1.14.5"

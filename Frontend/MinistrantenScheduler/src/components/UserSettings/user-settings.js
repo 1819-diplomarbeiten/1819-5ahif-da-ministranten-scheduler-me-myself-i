@@ -27,11 +27,11 @@ export class UserSettings extends LitElement{
     /*********************************************User-Layout**********************************************************/
 
     getAllUsers() {
-        this.shadowRoot.getElementById('minis').innerHTML = ''
+        this.shadowRoot.getElementById('users').innerHTML = ''
         for (let i = 0;i < this.allUser.length;i++) {
             let input = new User();
             input = this.allUser[i];
-            this.shadowRoot.getElementById('minis').innerHTML += this.getUserLayout(input)
+            this.shadowRoot.getElementById('users').innerHTML += this.getUserLayout(input)
 
         }
     }
@@ -112,7 +112,7 @@ export class UserSettings extends LitElement{
                 </thead>
 
                 <br>
-                <tbody id="minis">
+                <tbody id="users">
                 
                 </tbody>
             </table>
