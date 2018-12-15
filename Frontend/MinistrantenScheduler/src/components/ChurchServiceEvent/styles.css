@@ -8,8 +8,9 @@
     background-color: #856404;
     text-align: center;
     vertical-align: center;
+    margin: 10px;
 }
-.rcconers {
+.rconers {
     border-radius: 15px;
     border: 6px;
 }

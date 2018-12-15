@@ -1,13 +1,27 @@
 import {html, LitElement} from '@polymer/lit-element';
 import {HtmlService} from '../../services/HtmlClientService/html-service';
 import {Participant} from "../Entities/Participant/participant";
+import {repeat} from "@polymer/lit-element/node_modules/lit-html/directives/repeat.js";
 //import {PolymerElement, html} from 'https://unpkg.com/@polymer/polymer/polymer-element.js?module';
 //import {Sortable, Plugins} from '@shopify/draggable';
 
 
 export class ChurchServiceEvent extends LitElement{
+
+
+    static get properties() {
+        return{
+            allParticipants:{
+                type: Array
+            }
+        }
+    }
+
+
     constructor() {
         super();
+        this.allParticipants = HtmlService.getAllParticipant();
+
     }
 
     dragStart(event) {
@@ -27,33 +41,7 @@ export class ChurchServiceEvent extends LitElement{
 
 
 
-    /*******************************************Participant************************************************************/
-    loadParticipant(){
-        let minis = this.shadowRoot.getElementById('participants');
-        let fillPart;
-        let data = HtmlService.getAllParticipant();
-        for(var i = 0;i < data.length;i++){
-            fillPart = new Participant()
-            fillPart = data[i];
-            minis.innerHTML += this.addParticipantLayout(fillPart);
-        }
-        console.log("success test methode");
-    }
-    /**************************************Participant-Layout**********************************************************/
-    //Übergeben von der Klasse Participant
-    addParticipantLayout(input) {
-       return `<br>        
-        <div draggable="true" ondragstart="dragStart(event)" id="${input.participantId}">
-            <div class="col-md-12">
-                <div class="rectangle-Part rcconers">
-                    <label id="participant" class="font-styles-Part">` + input.firstName + ` ` + input.lastName + `</label>
-                </div>
-            </div>
-        </div>
-        <br>
-        `;
-    }
-    /**********************************************Participant*********************************************************/
+
 
     /**********************************************Appointment*********************************************************/
     loadAppointments() {
@@ -66,7 +54,7 @@ export class ChurchServiceEvent extends LitElement{
         return `
          <div>
             <div>
-                <div class="rectangle-Appo rcconers">
+                <div class="rectangle-Appo rconers">
                     <div class="row font-header-style">
                         <label>Montag</label>
                         <hr>
@@ -87,7 +75,6 @@ export class ChurchServiceEvent extends LitElement{
     /******************************************Render******************************************************************/
     render() {
         $(document).ready(() =>{
-            this.loadParticipant();
             this.loadAppointments();
         });
         return html`
@@ -105,8 +92,17 @@ export class ChurchServiceEvent extends LitElement{
         <br>
         <div>
             <div class="col-md-3 row">             
-                <div id="participants" class="col-md-9"></div> 
-                <div class="vertic-line col-md-1"></div>
+                <div id="participants" class="col-md-9">
+                    ${repeat(this.allParticipants,(item) => html`
+                                                            <div draggable="true" onDragStart="${() => this.dragStart(event)}" id="${item.participantId}">
+                                                                <div class="col-md-12">
+                                                                    <div class="rectangle-Part rconers form-style">
+                                                                        <label class="font-styles-Part">${item.firstName} ${item.lastName}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            `)}
+                </div>  
             </div>
             <div class="col-md-8">
                 <div id="Appo" class="col-md-7">
