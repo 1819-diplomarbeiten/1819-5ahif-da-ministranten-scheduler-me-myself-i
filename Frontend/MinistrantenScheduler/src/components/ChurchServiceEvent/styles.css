@@ -3,7 +3,7 @@
     height: 650px;
 }
 .rectangle-Part{
-    height: 30px;
+    height: 40px;
     width: auto;
     background-color: #856404;
     text-align: center;
@@ -14,11 +14,6 @@
     border-radius: 15px;
     border: 6px;
 }
-.font-styles-Part{
-    color: white;
-    font-size: 12px;
-    padding: 6px;
-}
 .rectangle-Appo {
     height: 300px;
     width: 300px;
@@ -28,4 +23,11 @@
     text-align: center;
     padding: 15px;
     font-size: 18px;
+}
+.form-style {
+    font-family: arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    text-align: left;
 }
