@@ -21,8 +21,9 @@ export class ChurchServiceEvent extends LitElement{
     constructor() {
         super();
         this.allParticipants = HtmlService.getAllParticipant();
-        //this.internalDND = "Dragger";
-        //this.init()
+        /*let user = this.getAttribute("user");
+        let pass = this.getAttribute("pass");
+        console.log(user+ "  "+pass);*/
     }
 
      dragStartHandler(event) {
@@ -30,7 +31,8 @@ export class ChurchServiceEvent extends LitElement{
          this.internalDND = event
      }
 
-    dropHandler() {
+    dropHandler(event) {
+        event.target.preventDefault();
         console.log("drop"+ this.internalDND)
         this.shadowRoot.getElementById('test').innerHTML += `<p>${this.internalDND}</p>`
 
@@ -54,7 +56,6 @@ export class ChurchServiceEvent extends LitElement{
         <script lang="javascript" type="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">      
         <link rel="stylesheet" type="text/css" href="/src/components/ChurchServiceEvent/styles.css">
-        <!--<script lang="javascript" type="javascript" src="/node_modules/@shopify/draggable/lib/draggable.js"></script>-->
         
         
         
@@ -81,7 +82,7 @@ export class ChurchServiceEvent extends LitElement{
                         <div class="col-md-12">
                             <label class="form-style col-md-12" style="padding: 10px; text-align: center; border-bottom: #0c5460 1px solid;">Montag</label>
                         </div>                
-                        <div style="height: 200px;width: 300px;" id="test"  @drop="${() => this.dropHandler()}" >
+                        <div style="height: 200px;width: 300px;" id="test"  @drop="${(event) => this.dropHandler(event)}" >
                         
                         </div>
                     </div>

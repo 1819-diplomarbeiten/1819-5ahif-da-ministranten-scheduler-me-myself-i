@@ -13,35 +13,53 @@ class MinistrantenVerwaltung extends LitElement {
 
     static get properties() {
         return {
-            switcher: this.shadowRoot
+            changer: {
+                type: String,
+                notify: true
+            }
         }
+
     }
 
     constructor() {
         super();
-        this.switcher = this.shadowRoot;
 
     }
 
 
-    switchComponent(input) {
-        this.switcher = this.switcher.getElementById('components');
-        switch (input.toString()) {
-            case "login":
+  /*switchComponent(input) {
+      let elem = null;
+      let switcher = this.shadowRoot.getElementById('components');
 
-            case "chooser":
+      while (switcher.firstChild) {
+          switcher.removeChild(switcher.firstChild);
+      }
 
-        }
-        if (input == "login") {
-            this.switcher.innerHTML = `<login-component></login-component>`;
-        }
-        else if (input == "church-event") {
-            this.switcher.innerHTML = `<church-event-component></church-event-component>`
-        }
-
-
-
-    }
+      switch (input) {
+          case 'login':
+              elem = document.createElement('login-component');
+              switcher.appendChild(elem);
+              break
+          case 'churchEvent':
+              elem = document.createElement('church-event-component');
+              switcher.appendChild(elem);
+              break
+          case 'createChurchEvent':
+              elem = document.createElement('create-church-event-component');
+              switcher.appendChild(elem);
+              break
+          case 'userSettings':
+              elem = document.createElement('user-settings-component');
+              switcher.appendChild(elem);
+              break
+          case 'participantSettings':
+              elem = document.createElement('participant-settings-component');
+              switcher.appendChild(elem);
+              break
+          default:
+              break
+      }
+  }*/
 
 
 /*<!--<create-event-component></create-event-component>-->
@@ -53,14 +71,12 @@ class MinistrantenVerwaltung extends LitElement {
 
 
   render() {
-    $(document).ready(() =>{
-        this.switchComponent("church-event")
-    });
-    return html`
-      <div id="components">
-        
-      </div>
-    `;
+      return html`
+        <div id="components">
+            <!--<login-component></login-component>-->
+            <create-user-component></create-user-component>
+        </div>
+      `;
   }
 }
 

@@ -1,0 +1,32 @@
+.circle-plus {
+    background: url("/src/components/Images/plus.png");
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-size: cover;
+    cursor: pointer;
+    padding: 30px;
+    margin-right: 20px;
+}
+.circle-minus {
+    background: url("/src/components/Images/negative.png");
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-size: cover;
+    cursor: pointer;
+    padding: 30px;
+    margin-left: 20px;
+}
+.button-print {
+    padding-bottom: 50px;
+}
+
+.button-return {
+    vertical-align: top;
+
+}
+.text-color-button {
+    color: white;
+    background-color: #0c5460;
+}

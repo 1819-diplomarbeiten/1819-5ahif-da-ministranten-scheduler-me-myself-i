@@ -1,12 +1,17 @@
 import {html,LitElement} from '@polymer/lit-element';
+import {repeat} from '@polymer/lit-element/node_modules/lit-html/directives/repeat.js';
+import {Participant} from "../Entities/Participant/participant";
 
-export class CreateNewEvent extends LitElement{
+export class CreateNewUser extends LitElement{
 
     static get properties() {
         return{
             anzahl: Number,
             realAnzahl: Number,
-            test: String
+            test: String,
+            getParticipants:{
+                type: Array
+            }
         }
     }
 
@@ -18,6 +23,9 @@ export class CreateNewEvent extends LitElement{
         this.anzahl = 0;
         this.realAnzahl = 0;
 
+
+        this.push('getParticipants',"Kiwi");
+        console.log(this.getParticipants.length);
     }
 
     addEventParticipant() {
@@ -70,8 +78,12 @@ export class CreateNewEvent extends LitElement{
             </div>
             <hr>`
     }
+
     /**********************************************Participant-Layout**************************************************/
 
+    safeUser() {
+        alert("Safe")
+    }
 
 
     render() {
@@ -81,24 +93,23 @@ export class CreateNewEvent extends LitElement{
         <script lang="javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!--===============================================================================================-->
-        <link rel="stylesheet" href="/src/components/CreateNewEvent/styles.css">
+        <link rel="stylesheet" href="/src/components/CreateNewUser/styles.css">
         
         
         
         <div class="col-md-4">
-            <span id="testis"></span>
         </div>
-        <div class="col-md-6 row">
+        <div class="col-md-6 row" style="padding: 30px;">
             <h1>Neuer User anlegen</h1>
             <div class="row">
             <br>
                 <div class="col-sm-4">
                     <label>Username</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" placeholder="MaxMustermann">
                 </div>
                 <div class="col-sm-4">
                     <label>Passwort</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" placeholder="Hallo1234">
                 </div>
             </div>
             <br>
@@ -112,11 +123,11 @@ export class CreateNewEvent extends LitElement{
             <div class="row">
                 <div class="col-sm-4">
                     <label>Telefonnummer</label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" placeholder="+43************">
                 </div>
                 <div class="col-sm-4">
                     <label>Zw. Telefonnummer<span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" placeholder="+43************">
                 </div>
             </div>
             
@@ -166,13 +177,39 @@ export class CreateNewEvent extends LitElement{
             <br>
             <div id="addParticipant">
             
+                ${`
+            <div>
+                <div class="row">
+                    <h3>Teilnehmer anlegen</h3>
+                    <div class="col-sm-4">
+                        <label>Vorname</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-4">
+                        <label>Nachname</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <br>
+                <div class="row col-sm-4">
+                    <div class="custom-radio custom-control">
+                        <input type="radio" class="custom-control-input">
+                        <label class="custom-control-label">Ministrant</label>
+                    </div>
+                    <div class="custom-radio custom-control">
+                        <input type="radio" class="custom-control-input">
+                        <label class="custom-control-label">Lektor</label>
+                    </div>
+                </div>
+            </div>`.repeat(3)}
+                
             </div>
             <div class="row">
                 <hr class="col-sm-8">
             </div>
             <div class="col-md-8" align="center">
-                <span class="circle plus" @click="${() => this.addEventParticipant()}"></span>
-                <span class="circle minus" @click="${() => this.deleteEventParticipant()}"></span>
+                <button class="circle-plus" @click="${() => this.addEventParticipant()}"></button>
+                <button class="circle-minus" @click="${() => this.deleteEventParticipant()}"></button>
                 <br>
             </div>
             <div>
@@ -180,7 +217,7 @@ export class CreateNewEvent extends LitElement{
             </div>
             <div class="col-md-8 button-print">
             <hr>
-                <button class="col-md-8 form-control text-color-button">Speichern</button>
+                <button class="col-md-8 form-control text-color-button" @click="${() => this.safeUser()}">Speichern</button>
             </div>
         </div>
         <br>
@@ -190,10 +227,4 @@ export class CreateNewEvent extends LitElement{
     `;
     }
 }
-window.customElements.define('create-event-component',CreateNewEvent);
-
-//<svg height="60" width="60">
-//                     <circle cx="30" cy="30" r="25" stroke="black" stroke-width="2" fill="white">
-//
-//                     </circle>
-//                 </svg>
+window.customElements.define('create-user-component',CreateNewUser);
