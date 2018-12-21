@@ -16,8 +16,37 @@ export class Participant extends LitElement{
         super();
     }
 
+
     getParticipantId() {
         return this.participantId
+    }
+
+    setParticipantId(value) {
+        this.participantId = value;
+    }
+    getFirstName() {
+        return this.firstName;
+    }
+    setFirstName(value) {
+        this.firstName = value;
+    }
+    getLastName() {
+        return this.lastName;
+    }
+    setLastName(value) {
+        this.lastName = value;
+    }
+    getGrad() {
+        return this.grad;
+    }
+    setGrad(value) {
+        this.grad = value;
+    }
+    getUserId() {
+        return this.userId;
+    }
+    setUserId(value) {
+        this.userId = value;
     }
 }
 window.customElements.define("participant-component",Participant);

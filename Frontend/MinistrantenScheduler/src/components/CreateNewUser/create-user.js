@@ -9,9 +9,7 @@ export class CreateNewUser extends LitElement{
             anzahl: Number,
             realAnzahl: Number,
             test: String,
-            getParticipants:{
-                type: Array
-            }
+            getParticipants:[]
         }
     }
 
@@ -23,63 +21,23 @@ export class CreateNewUser extends LitElement{
         this.anzahl = 0;
         this.realAnzahl = 0;
 
-
-        this.push('getParticipants',"Kiwi");
-        console.log(this.getParticipants.length);
+        this.partSettings = new Participant();
+        this.getParticipants = [];
     }
 
+
     addEventParticipant() {
-        console.log("click geht");
-        this.anzahl += 1;
-        //console.log(anzahl);
-        this.shadowRoot.getElementById('addParticipant').innerHTML += this.getParticipantLayout();
+        this.realAnzahl++;
+        var part = new Participant();
+        part.setParticipantId(this.getParticipants.length);
+        this.getParticipants.push(this.getParticipants.length);
     }
 
     deleteEventParticipant() {
-        this.realAnzahl = this.anzahl - 1;
-        var newAllParticipant;
-        let inp = 0;
-        for (let i=0;i<this.realAnzahl;i++){
-            newAllParticipant += this.getParticipantLayout()
-            inp++;
-        }
-        this.anzahl=this.realAnzahl;
-        this.shadowRoot.getElementById('addParticipant').innerHTML = ``;
-        this.shadowRoot.getElementById('addParticipant').innerHTML = inp < 1 ?``: ``+newAllParticipant;
+        this.getParticipants.pop()
+        this.realAnzahl--;
     }
 
-
-    /**********************************************Participant-Layout**************************************************/
-    getParticipantLayout() {
-        return `<br>
-            <div>
-                <div class="row">
-                    <h3>Teilnehmer anlegen</h3>
-                    <div class="col-sm-4">
-                        <label>Vorname</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <label>Nachname</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <br>
-                <div class="row col-sm-4">
-                    <div class="custom-radio custom-control">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label">Ministrant</label>
-                    </div>
-                    <div class="custom-radio custom-control">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label">Lektor</label>
-                    </div>
-                </div>
-            </div>
-            <hr>`
-    }
-
-    /**********************************************Participant-Layout**************************************************/
 
     safeUser() {
         alert("Safe")
@@ -149,59 +107,35 @@ export class CreateNewUser extends LitElement{
             <div class="row">
                 <hr class="col-sm-8">
             </div>
-            
-            <div>
-                <div class="row">
-                    <h3>Teilnehmer anlegen</h3>
-                    <div class="col-sm-4">
-                        <label>Vorname</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <label>Nachname</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <br>
-                <div class="row col-sm-4">
-                    <div class="custom-radio custom-control">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label">Ministrant</label>
-                    </div>
-                    <div class="custom-radio custom-control">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label">Lektor</label>
-                    </div>
-                </div>
-            </div>
-            <br>
             <div id="addParticipant">
-            
-                ${`
-            <div>
-                <div class="row">
-                    <h3>Teilnehmer anlegen</h3>
-                    <div class="col-sm-4">
-                        <label>Vorname</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="col-sm-4">
-                        <label>Nachname</label>
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <br>
-                <div class="row col-sm-4">
-                    <div class="custom-radio custom-control">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label">Ministrant</label>
-                    </div>
-                    <div class="custom-radio custom-control">
-                        <input type="radio" class="custom-control-input">
-                        <label class="custom-control-label">Lektor</label>
-                    </div>
-                </div>
-            </div>`.repeat(3)}
+                ${repeat(this.getParticipants,(item) => html`
+                                                            <div>
+                                                                <div class="row">
+                                                                    <h3>Teilnehmer anlegen</h3>
+                                                                    <div class="col-sm-4">
+                                                                        <label>Vorname</label>
+                                                                        <input type="text" class="form-control">
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <label>Nachname</label>
+                                                                        <input type="text" class="form-control">
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row col-sm-4">
+                                                                    <div class="custom-radio custom-control">
+                                                                        <input id="minis" type="radio" class="custom-control-input" >
+                                                                        <label class="custom-control-label">Ministrant</label>
+                                                                    </div>
+                                                                    <div class="custom-radio custom-control">
+                                                                        <input id="lector" type="radio" class="custom-control-input">
+                                                                        <label class="custom-control-label">Lektor</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br><br>
+                `)}
+               
                 
             </div>
             <div class="row">
