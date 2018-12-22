@@ -110,8 +110,8 @@ export class CreateNewChurchEvent extends LitElement{
                 
                 </div>
                 <div class="col-md-8" align="center">
-                <span class="circle plus" @click="${() => this.addEventChurch()}"></span>
-                <span class="circle minus" @click="${() => this.deleteEventChurch()}"></span>
+                <span class="circle-plus" @click="${() => this.addEventChurch()}"></span>
+                <span class="circle-minus" @click="${() => this.deleteEventChurch()}"></span>
                 <br>
             </div>
             </div>

@@ -6,41 +6,57 @@ export class CreateNewUser extends LitElement{
 
     static get properties() {
         return{
-            anzahl: Number,
-            realAnzahl: Number,
-            test: String,
-            getParticipants:[]
+            getParticipants:[],
+            count:Number
         }
     }
 
     constructor() {
         super();
-        this.anzahl = new Number();
-        this.realAnzahl = new Number();
-        this.test = "Hallo";
-        this.anzahl = 0;
-        this.realAnzahl = 0;
-
-        this.partSettings = new Participant();
         this.getParticipants = [];
+        this.count = 0;
     }
 
 
     addEventParticipant() {
-        this.realAnzahl++;
         var part = new Participant();
-        part.setParticipantId(this.getParticipants.length);
-        this.getParticipants.push(this.getParticipants.length);
+        this.count++;
+        part.setParticipantId(this.count);
+        this.getParticipants.push(part);
     }
 
     deleteEventParticipant() {
-        this.getParticipants.pop()
-        this.realAnzahl--;
+        this.getParticipants.pop();
+        this.count--;
     }
 
 
     safeUser() {
         alert("Safe")
+        this.getAllParticipants()
+    }
+
+    backComponent() {
+        let root = document.querySelector("ministranten-verwaltung");
+        let component = root.shadowRoot.querySelector("#components");
+        component.innerHTML = `<church-event-component></church-event-component>`
+    }
+
+    getAllParticipants() {
+        if (this.count > 0) {
+            let it = this.shadowRoot;
+            for (var i = 0;i < this.getParticipants.length;i++){
+                this.getParticipants[i].firstName = it.getElementById('vor'+(i+1)).value;
+                this.getParticipants[i].lastName = it.getElementById('nach'+(i+1)).value;
+                if (it.getElementById('lector'+(i+1)).checked) {
+                    this.getParticipants[i].grad = "Lector";
+                }
+                else {
+                    this.getParticipants[i].grad = "Ministrant";
+                }
+            }
+        }
+        console.log("Hallo")
     }
 
 
@@ -114,21 +130,21 @@ export class CreateNewUser extends LitElement{
                                                                     <h3>Teilnehmer anlegen</h3>
                                                                     <div class="col-sm-4">
                                                                         <label>Vorname</label>
-                                                                        <input type="text" class="form-control">
+                                                                        <input id="vor${item.participantId}" type="text" class="form-control" placeholder="Max">
                                                                     </div>
                                                                     <div class="col-sm-4">
                                                                         <label>Nachname</label>
-                                                                        <input type="text" class="form-control">
+                                                                        <input id="nach${item.participantId}" type="text" class="form-control" placeholder="Mustermann">
                                                                     </div>
                                                                 </div>
                                                                 <br>
                                                                 <div class="row col-sm-4">
                                                                     <div class="custom-radio custom-control">
-                                                                        <input id="minis" type="radio" class="custom-control-input" >
+                                                                        <input id="minis${item.participantId}" type="radio" class="custom-control-input" >
                                                                         <label class="custom-control-label">Ministrant</label>
                                                                     </div>
                                                                     <div class="custom-radio custom-control">
-                                                                        <input id="lector" type="radio" class="custom-control-input">
+                                                                        <input id="lector${item.participantId}" type="radio" class="custom-control-input">
                                                                         <label class="custom-control-label">Lektor</label>
                                                                     </div>
                                                                 </div>
@@ -136,7 +152,6 @@ export class CreateNewUser extends LitElement{
                                                             <br><br>
                 `)}
                
-                
             </div>
             <div class="row">
                 <hr class="col-sm-8">
@@ -151,7 +166,12 @@ export class CreateNewUser extends LitElement{
             </div>
             <div class="col-md-8 button-print">
             <hr>
-                <button class="col-md-8 form-control text-color-button" @click="${() => this.safeUser()}">Speichern</button>
+                <div class="button-stack col-md-12">
+                    <button class="form-control text-color-back-button" @click="${() => this.backComponent()}">Zurück</button>
+                </div>
+                <div class="button-stack col-md-12">
+                    <button class="form-control text-color-button" @click="${() => this.safeUser()}">Speichern</button>
+                </div>
             </div>
         </div>
         <br>

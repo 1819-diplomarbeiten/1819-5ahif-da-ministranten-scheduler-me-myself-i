@@ -64,7 +64,7 @@ export class ChurchServiceEvent extends LitElement{
         </div>  
         <br>
         <div class="row">
-            <div class="col-md-3" style="border-right: black 1px solid;">             
+            <div class="col-md-2" style="border-right: black 1px solid;">             
                 <div>
                     ${repeat(this.allParticipants,(item) => html`
                                                             <div draggable="true" id="${item.participantId}" @dragstart="${()=> this.dragStartHandler(item.participantId)}">

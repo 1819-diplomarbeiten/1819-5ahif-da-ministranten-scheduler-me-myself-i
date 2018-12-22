@@ -4,7 +4,7 @@
 }
 .rectangle-Part{
     height: 40px;
-    width: auto;
+    width: 80%;
     background-color: #856404;
     text-align: center;
     vertical-align: center;
@@ -30,4 +30,5 @@
     color: white;
     padding: 5px;
     text-align: left;
+    display: inline-flex;
 }

@@ -1,45 +1,20 @@
-.circle{
-    border:3px solid #000;
-    width:40px;
-    height:40px;
-    border-radius:100%;
-    position:relative;
-    margin:4px;
-    display:inline-block;
-    vertical-align:middle;
+.circle-plus {
+    background: url("/src/components/Images/plus.png");
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-size: cover;
+    cursor: pointer;
+    padding: 30px;
+    margin-right: 20px;
 }
-.circle.plus:before,
-.circle.plus:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:black;
-}
-.circle.plus:before{
-    width: 6px;
-    margin: 2px auto;
-}
-.circle.plus:after{
-    margin: auto 2px;
-    height: 6px;
-}
-
-/* and a bonus!!! minus :-) */
-.circle.minus:before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:black;
-    margin: auto 2px;
-    height: 6px;
-}
-
-.background100 {
-
+.circle-minus {
+    background: url("/src/components/Images/negative.png");
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-size: cover;
+    cursor: pointer;
+    padding: 30px;
+    margin-left: 20px;
 }
