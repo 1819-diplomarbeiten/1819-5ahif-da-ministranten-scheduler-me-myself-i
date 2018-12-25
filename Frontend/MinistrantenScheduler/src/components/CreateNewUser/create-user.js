@@ -63,9 +63,9 @@ export class CreateNewUser extends LitElement{
     render() {
         return html`
         <!--======================================Wichtig==================================================-->
-        <script lang="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script lang="javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script lang="javascript" src="/node_modules/jQuery/tmp/jquery.js"></script>
+        <script lang="javascript" type="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" href="/src/components/CreateNewUser/styles.css">
         
@@ -79,29 +79,29 @@ export class CreateNewUser extends LitElement{
             <br>
                 <div class="col-sm-4">
                     <label>Username</label>
-                    <input type="text" class="form-control" placeholder="MaxMustermann">
+                    <input id="userName" type="text" class="form-control" placeholder="MaxMustermann">
                 </div>
                 <div class="col-sm-4">
                     <label>Passwort</label>
-                    <input type="text" class="form-control" placeholder="Hallo1234">
+                    <input id="password" type="text" class="form-control" placeholder="Hallo1234">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-sm-8">
                     <label>Email</label>
-                    <input type="text" class="form-control" placeholder="max.mustermann@example.com">
+                    <input id="email" type="text" class="form-control" placeholder="max.mustermann@example.com">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-sm-4">
                     <label>Telefonnummer</label>
-                    <input type="text" class="form-control" placeholder="+43************">
+                    <input id="tel1" type="text" class="form-control" placeholder="+43************">
                 </div>
                 <div class="col-sm-4">
                     <label>Zw. Telefonnummer<span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" placeholder="+43************">
+                    <input id="tel2" type="text" class="form-control" placeholder="+43************">
                 </div>
             </div>
             
@@ -111,11 +111,11 @@ export class CreateNewUser extends LitElement{
             
             <div class="row col-sm-4">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input">
+                    <input id="waRe" type="checkbox" class="custom-control-input">
                     <label class="custom-control-label">WhatsApp rew.</label>
                 </div>
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input">
+                    <input id="emRe" type="checkbox" class="custom-control-input">
                     <label class="custom-control-label">Email rew.</label>
                 </div>
             </div>

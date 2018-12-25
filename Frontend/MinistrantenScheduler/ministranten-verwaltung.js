@@ -31,7 +31,8 @@ class MinistrantenVerwaltung extends LitElement {
 /*<!--<create-event-component></create-event-component>-->
 <!--<create-church-event-component></create-church-event-component>-->
 <!--<user-settings-component></user-settings-component>-->
-<!--<participant-settings-component></participant-settings-component>-->*/
+<create-church-event-component></create-church-event-component>
+<!--<create-church-event-component></create-church-event-component>-->*/
 
 
 
@@ -40,9 +41,10 @@ class MinistrantenVerwaltung extends LitElement {
       return html`
         <div id="components">
             <!--<login-component></login-component>-->
-            <!-- <create-church-event-component></create-church-event-component>-->
-            <create-user-component></create-user-component>
-           
+            <!--<create-user-component></create-user-component> -->
+            
+            <user-settings-component></user-settings-component>
+            <!--<participant-settings-component></participant-settings-component>-->
         </div>
       `;
   }

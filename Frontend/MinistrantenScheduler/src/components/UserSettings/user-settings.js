@@ -10,21 +10,43 @@ export class UserSettings extends LitElement{
 
     static get properties() {
         return {
-            allUser:{
-                type: Array
-            },
-            selectedUser: User
+            allUser:[],
+            selectedUser: User,
+            count:Number
         }
     }
 
     constructor() {
         super();
+        this.allUser = [];
         this.allUser = HtmlService.getAllUser()
     }
 
     setForm(input) {
-        this.selectedUser = input
-        console.log("click")
+        if (this.selectedUser != null) {
+            this.allUser[this.count].userName = this.shadowRoot.getElementById('userName').value;
+            this.allUser[this.count].password = this.shadowRoot.getElementById('password').value;
+            this.allUser[this.count].email = this.shadowRoot.getElementById('email').value;
+            this.allUser[this.count].phoneNumber = this.shadowRoot.getElementById('phone').value;
+            this.allUser[this.count].secPhoneNumber = this.shadowRoot.getElementById('phone_two').value;
+            this.allUser[this.count].whatsAppRe = this.shadowRoot.getElementById('check_whatsApp').checked;
+            this.allUser[this.count].emailRe = this.shadowRoot.getElementById('check_email').checked;
+        }
+        this.count = input - 1;
+        this.selectedUser = null;
+        this.selectedUser = new User();
+        for (var i = 0;i < this.allUser.length;i++){
+            if (this.allUser[i].userId == input) {
+                this.selectedUser = this.allUser[i];
+                this.shadowRoot.getElementById('userName').value = this.selectedUser.userName;
+                this.shadowRoot.getElementById('password').value = this.selectedUser.password;
+                this.shadowRoot.getElementById('email').value = this.selectedUser.email;
+                this.shadowRoot.getElementById('phone').value = this.selectedUser.phoneNumber;
+                this.shadowRoot.getElementById('phone_two').value = this.selectedUser.secPhoneNumber;
+                this.shadowRoot.getElementById('check_whatsApp').checked = this.selectedUser.whatsAppRe;
+                this.shadowRoot.getElementById('check_email').checked = this.selectedUser.emailRe;
+            }
+        }
     }
 
     getCheckerWA() {
@@ -47,6 +69,10 @@ export class UserSettings extends LitElement{
                 this.shadowRoot.getElementById('check_email').checked = false;
             }
         }
+    }
+
+    test() {
+        alert("Click");
     }
 
     /***********************************************render*************************************************************/
@@ -74,11 +100,11 @@ export class UserSettings extends LitElement{
                     </thead>
                     <tbody>
                     ${repeat(this.allUser,(item) => html`
-                                                <tr @click="${() => this.setForm(item)}">    
+                                                <tr @click="${() => this.setForm(item.userId)}">    
                                                     <td><input className="input-checkbox" id="picker" type="checkbox" name="chooser"></td>
                                                     <td>${item.userName}</td>
                                                     <td>${item.password}</td>
-                                                    <td>${item.participants.map(x => ' ' + x.firstName + ' ' + x.lastName + ' ')}</td>
+                                                    <td @click="${() => this.test()}">${item.participants.map(x => ' ' + x.firstName + ' ' + x.lastName + ' ')}</td>
                                                 </tr>`)}
                     
                     </tbody>
@@ -88,31 +114,31 @@ export class UserSettings extends LitElement{
                 <form class="login-form validate-input">
                     <div class="div-form">
                         <label>User:</label>
-                        <input id="userName" type="text" class="form-control" value="${this.selectedUser== null ?  " " :  this.selectedUser.userName}">
+                        <input id="userName" type="text" class="form-control">
                     </div>
                 
                     <div class="div-form">
                         <label>Passwort:</label>
-                        <input id="password" type="text" class="form-control" value="${this.selectedUser== null ?  " " :  this.selectedUser.password}">
+                        <input id="password" type="text" class="form-control">
                     </div>
                 
                     <div class="div-form">
                         <label>E-Mail:</label>
-                        <input id="email" type="text" class="form-control" value="${this.selectedUser== null ?  " " :  this.selectedUser.email}">
+                        <input id="email" type="text" class="form-control">
                     </div>
                 
                     <div class="div-form">
                         <label>Tel:</label>
-                        <input id="phone" type="text" class="form-control" value="${this.selectedUser== null ?  " " :  this.selectedUser.phoneNumber}">
+                        <input id="phone" type="text" class="form-control">
                     </div>
                 
                     <div class="div-form">
                         <label>Tel:</label>
-                        <input id="phone_two" type="text" class="form-control" value="${this.selectedUser== null ?  " " :  this.selectedUser.secPhoneNumber}">
+                        <input id="phone_two" type="text" class="form-control">
                     </div>
                 
                     <div class="div-form">
-                        <input  type="checkbox" id="check_whatsapp" checked="${this.getCheckerWA()}" >
+                        <input  type="checkbox" id="check_whatsApp" checked="${() => this.getCheckerWA()}" >
                         <label for="check_whatsapp" style="padding-left: 20px;">Reminder via Whatsapp</label>
                     </div>
                     <div class="div-form">
