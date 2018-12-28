@@ -87,7 +87,7 @@ export class UserSettings extends LitElement{
 
         <h1 style="display: block; align-items: center;">User-Settings</h1>
         <br>
-        <div class="col-sm-12" style="padding-top: 220px">
+        <div class="col-sm-12v row" style="padding-top: 220px">
             <div class="col-md-8">
                 <table id="table" class="table fixed_header table-hover">
                     <thead>
@@ -110,7 +110,7 @@ export class UserSettings extends LitElement{
                     </tbody>
                 </table>
             </div>
-            <div class="col-sm-4 form-border">
+            <div class="col-md-4 form-border">
                 <form class="login-form validate-input">
                     <div class="div-form">
                         <label>User:</label>

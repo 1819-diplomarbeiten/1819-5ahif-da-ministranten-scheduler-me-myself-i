@@ -10,9 +10,7 @@ export class ChurchServiceEvent extends LitElement{
 
     static get properties() {
         return{
-            allParticipants:{
-                type: Array
-            },
+            allParticipants:[],
             internalDND: Number
         }
     }
@@ -20,32 +18,39 @@ export class ChurchServiceEvent extends LitElement{
 
     constructor() {
         super();
+        this.allParticipants = [];
         this.allParticipants = HtmlService.getAllParticipant();
         /*let user = this.getAttribute("user");
         let pass = this.getAttribute("pass");
         console.log(user+ "  "+pass);*/
     }
 
-     dragStartHandler(event) {
-         console.log("drag" + event)
-         this.internalDND = event
+     dragStartHandler(event, item) {
+         console.log("drag" + event.target.id);
+         event.dataTransfer.setData('text',event.target.id);
+         //this.internalDND = event
      }
 
     dropHandler(event) {
-        event.target.preventDefault();
-        console.log("drop"+ this.internalDND)
-        this.shadowRoot.getElementById('test').innerHTML += `<p>${this.internalDND}</p>`
+        //event.preventDefault();
+        console.log("drop")
+        let int = event.dataTransfer.getData('Text');
 
+        this.shadowRoot.getElementById('test').innerHTML += `<p>${int}</p>`
     }
 
-    dragOverHandler() {
-         console.log("dragover")
+    /*dragOverHandler(event) {
+        event.preventDefault();
+        console.log("dragover")
     }
 
+    dragEnterHandler(event) {
+        event.preventDefault();
+    }*/
 
 
 
-
+/*@dragstart="${()=> this.dragStartHandler(item.participantId)}"        @drop="${(event) => this.dropHandler(event)}"*/
 
 
 
@@ -67,7 +72,7 @@ export class ChurchServiceEvent extends LitElement{
             <div class="col-md-2" style="border-right: black 1px solid;">             
                 <div>
                     ${repeat(this.allParticipants,(item) => html`
-                                                            <div draggable="true" id="${item.participantId}" @dragstart="${()=> this.dragStartHandler(item.participantId)}">
+                                                            <div draggable="true" id="${item.participantId}" @dragstart="${(event)=> this.dragStartHandler(event,item)}">
                                                                 <div class="rectangle-Part rconers">
                                                                     <label class="form-style">${item.firstName} ${item.lastName}</label>
                                                                 </div>
@@ -82,7 +87,7 @@ export class ChurchServiceEvent extends LitElement{
                         <div class="col-md-12">
                             <label class="form-style col-md-12" style="padding: 10px; text-align: center; border-bottom: #0c5460 1px solid;">Montag</label>
                         </div>                
-                        <div style="height: 200px;width: 300px;" id="test"  @drop="${(event) => this.dropHandler(event)}" >
+                        <div style="height: 200px;width: 300px;" id="test" @dragover="${(event) => event.preventDefault()}" @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event)}">
                         
                         </div>
                     </div>
