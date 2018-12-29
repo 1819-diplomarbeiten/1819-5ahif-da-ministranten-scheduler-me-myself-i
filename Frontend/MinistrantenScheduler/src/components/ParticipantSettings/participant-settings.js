@@ -49,7 +49,7 @@ export class ParticipantSettings extends LitElement{
     render() {
         return html`
         <!--======================================Wichtig==================================================-->
-        <script lang="javascript" src="/node_modules/jQuery/tmp/jquery.js"></script>
+        <script lang="javascript" src="/node_modules/jquery/dist/jquery.js"></script>
         <script lang="javascript" type="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
         <!--===============================================================================================-->

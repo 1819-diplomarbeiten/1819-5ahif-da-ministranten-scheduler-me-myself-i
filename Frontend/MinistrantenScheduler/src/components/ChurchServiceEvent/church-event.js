@@ -45,9 +45,11 @@ export class ChurchServiceEvent extends LitElement{
     /******************************************Render******************************************************************/
     render() {
         return html`
-        <script lang="javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <!--======================================Wichtig==================================================-->
+        <script lang="javascript" src="/node_modules/jquery/dist/jquery.js"></script>
         <script lang="javascript" type="javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">      
+        <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <!--===============================================================================================-->     
         <link rel="stylesheet" type="text/css" href="/src/components/ChurchServiceEvent/styles.css">
         
         
