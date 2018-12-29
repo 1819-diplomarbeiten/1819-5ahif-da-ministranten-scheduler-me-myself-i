@@ -21,10 +21,10 @@ export class Login extends LitElement {
         console.log("click event login :" );
         this.userName = this.shadowRoot.getElementById('username').value;
         this.password = this.shadowRoot.getElementById('password').value;
-        /*let root = document.querySelector("ministranten-verwaltung");
+        let root = document.querySelector("ministranten-verwaltung");
         let components = root.shadowRoot.querySelector('#components');
         console.log(this.userName)
-        components.innerHTML = `<church-event-component user="${this.userName}" pass="${this.password}"></church-event-component>`*/
+        components.innerHTML = `<church-event-component user="${this.userName}" pass="${this.password}"></church-event-component>`
     }
 
 

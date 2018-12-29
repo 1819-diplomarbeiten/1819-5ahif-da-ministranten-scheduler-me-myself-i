@@ -39,18 +39,6 @@ export class ChurchServiceEvent extends LitElement{
         this.shadowRoot.getElementById('test').innerHTML += `<p>${int}</p>`
     }
 
-    /*dragOverHandler(event) {
-        event.preventDefault();
-        console.log("dragover")
-    }
-
-    dragEnterHandler(event) {
-        event.preventDefault();
-    }*/
-
-
-
-/*@dragstart="${()=> this.dragStartHandler(item.participantId)}"        @drop="${(event) => this.dropHandler(event)}"*/
 
 
 

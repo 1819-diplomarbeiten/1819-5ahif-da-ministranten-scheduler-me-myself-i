@@ -132,8 +132,36 @@ export class HtmlService{
     }
 
     static getUserById(its) {
-        let ist = new User()
-        ist = prop.find(item => item.userId == its)
-        return ist
+        /*let ist = new User()
+        ist = this.users.find(item => item.userId == its)*/
+
+        return  [
+            {
+                userId: 1,
+                userName: "auinger23",
+                password: "hallo123",
+                email: "halsdnfön@gmail.com",
+                phoneNumber: 9348753,
+                secPhoneNumber: 98745,
+                whatsAppRe: true,
+                emailRe: false,
+                participants: [
+                    {
+                        participantId: 1,
+                        lastName: "Herbert",
+                        firstName: "Franz",
+                        grad: "Ministrant",
+                        userId: 1
+                    },
+                    {
+                        participantId: 2,
+                        firstName: "Max",
+                        lastName: "Mustermann",
+                        grad: "Ministrant",
+                        userId:1
+                    }
+
+                ]
+            }];
     }
 }
