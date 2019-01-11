@@ -2,6 +2,7 @@ import {User} from "../../components/Entities/User/user";
 
 var datas = [];
 var prop = [];
+var appoin = [];
 export class HtmlService{
 
     static getAllParticipant() {
@@ -163,5 +164,104 @@ export class HtmlService{
 
                 ]
             }];
+    }
+
+    static getAllAppointments() {
+        return [
+            {
+                appointmentId: 1,
+                time:'11:30',
+                required_Mini: 7,
+                required_Lec: 2,
+                dayId: 1,
+                participants:[]
+            },
+            {
+                appointmentId: 2,
+                time:'10:30',
+
+                required_Mini: 5,
+                required_Lec: 5,
+                dayId: 2,
+                participants:[]
+            },
+            {
+                appointmentId: 3,
+                time:'12:30',
+                required_Mini: 9,
+                required_Lec: 6,
+                dayId: 3,
+                participants:[]
+            }
+        ]
+    }
+
+    static getAllDays() {
+        return [
+            {
+                dayId:1,
+                dayDate: '18.04.2019',
+                available: '20.04.2019',
+                deadline: '30.04.2019',
+                appointments:[
+                    {
+                        appointmentId: 1,
+                        time:'11:30',
+                        required_Mini: 7,
+                        required_Lec: 2,
+                        dayId: 1,
+                        participants:[]
+                    },
+                    {
+                        appointmentId: 2,
+                        time:'11:30',
+                        required_Mini: 5,
+                        required_Lec: 4,
+                        dayId: 1,
+                        participants:[]
+                    },
+                    {
+                        appointmentId: 3,
+                        time:'11:30',
+                        required_Mini: 9,
+                        required_Lec: 7,
+                        dayId: 1,
+                        participants:[]
+                    }
+                ]
+            },
+            {
+                dayId:2,
+                dayDate: '18.05.2019',
+                available: '20.05.2019',
+                deadline: '30.05.2019',
+                appointments:[
+                    {
+                        appointmentId: 1,
+                        time:'13:30',
+                        required_Mini: 3,
+                        required_Lec: 2,
+                        dayId: 2,
+                        participants:[]
+                    },
+                    {
+                        appointmentId: 2,
+                        time:'14:30',
+                        required_Mini: 5,
+                        required_Lec: 8,
+                        dayId: 2,
+                        participants:[]
+                    },
+                    {
+                        appointmentId: 3,
+                        time:'15:30',
+                        required_Mini: 2,
+                        required_Lec: 7,
+                        dayId: 2,
+                        participants:[]
+                    }
+                ]
+            }
+        ]
     }
 }

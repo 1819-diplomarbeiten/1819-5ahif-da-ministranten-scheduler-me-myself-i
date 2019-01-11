@@ -12,7 +12,7 @@ export class ChurchServiceEvent extends LitElement{
         return{
             allParticipants:[],
             internalDND: String,
-
+            allDays:[]
         }
     }
 
@@ -20,8 +20,11 @@ export class ChurchServiceEvent extends LitElement{
     constructor() {
         super();
         this.allParticipants = [];
+        this.allDays = [];
         this.internalDND = 'part';
         this.allParticipants = HtmlService.getAllParticipant();
+        this.allDays = HtmlService.getAllDays();
+        console.log(this.allDays.length)
         /*let user = this.getAttribute("user");
         let pass = this.getAttribute("pass");
         console.log(user+ "  "+pass);*/
@@ -32,12 +35,12 @@ export class ChurchServiceEvent extends LitElement{
          event.dataTransfer.setData(this.internalDND,item.participantId);
      }
 
-    dropHandler(event) {
+    dropHandler(event,item) {
         console.log("drop")
         let int = event.dataTransfer.getData(this.internalDND);
-        console.log(int)
 
-        this.shadowRoot.getElementById('test').innerHTML += this.addParticipants(this.allParticipants[int - 1]);
+        this.allDays[item.dayId - 1].appointments[0].participants.push(this.allParticipants[int - 1]);
+        this.shadowRoot.getElementById('App'+item.dayId).innerHTML += this.addParticipants(this.allParticipants[int - 1]);
     }
 
     addParticipants(inputs) {
@@ -73,7 +76,7 @@ export class ChurchServiceEvent extends LitElement{
             <div class="col-md-2" style="border-right: black 1px solid;">             
                 <div>
                     ${repeat(this.allParticipants,(item) => html`
-                                                            <div draggable="true" id="${item.participantId}" @dragstart="${(event)=> this.dragStartHandler(event,item)}">
+                                                            <div draggable="true" @dragstart="${(event)=> this.dragStartHandler(event,item)}">
                                                                 <div class="rectangle-Part rconers">
                                                                     <label class="form-style">${item.firstName} ${item.lastName}</label>
                                                                 </div>
@@ -81,18 +84,22 @@ export class ChurchServiceEvent extends LitElement{
                                                             `)}
                 </div>  
             </div>
-            <div class="col-md-8">
-                <div id="Appo" style="padding-left: 50%">
-                
-                    <div class="rectangle-Appo rconers">
-                        <div class="col-md-12">
-                            <label class="form-style col-md-12" style="padding: 10px; text-align: center; border-bottom: #0c5460 1px solid;">Montag</label>
-                        </div>                
-                        <div style="height: 200px;width: 300px;" id="test" @dragover="${(event) => event.preventDefault()}" @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event)}">
-                        
+            <div class="col-md-10">
+                <div id="Appo" class="row app-result-style" style="padding-left: 20%">
+                    <div class="app-horizontal">
+                        <div class="app-horizontal-scrollbar row">
+                            ${repeat(this.allDays,(item) => html`
+                                                              <div class="rectangle-Appo rconers App-style">
+                                                                  <div class="col-md-12">
+                                                                      <label class="form-style col-md-12" style="padding: 10px; text-align: center; border-bottom: #0c5460 1px solid;">Montag</label>
+                                                                  </div>                
+                                                                  <div style="height: 200px;width: 300px;" id="App${item.dayId}" @dragover="${(event) => event.preventDefault()}" @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event,item)}">
+                                                                
+                                                                  </div>
+                                                              </div>                                               
+                                                             `)}
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>

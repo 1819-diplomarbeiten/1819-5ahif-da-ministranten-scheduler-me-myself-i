@@ -6,7 +6,8 @@ export class Day extends LitElement {
             dayId:Number,
             dayDate:Date,
             available:Date,
-            deadline:Date
+            deadline:Date,
+            appointments:[]
         }
     }
 

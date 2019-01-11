@@ -32,3 +32,22 @@
     text-align: left;
     display: inline-flex;
 }
+.app-result-style {
+    width: 100%;
+}
+
+.App-style {
+    margin: 20px;
+
+}
+
+.app-horizontal-scrollbar {
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    width: 100%;
+    white-space: nowrap;
+}
+.app-horizontal {
+    width: 100%;
+}

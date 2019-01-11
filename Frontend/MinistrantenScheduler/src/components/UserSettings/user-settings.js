@@ -101,7 +101,7 @@ export class UserSettings extends LitElement{
                     <tbody>
                     ${repeat(this.allUser,(item) => html`
                                                 <tr @click="${() => this.setForm(item.userId)}">    
-                                                    <td><input className="input-checkbox" id="picker" type="checkbox" name="chooser"></td>
+                                                    <td><input class="input-checkbox" id="picker" type="checkbox" name="chooser"></td>
                                                     <td>${item.userName}</td>
                                                     <td>${item.password}</td>
                                                     <td @click="${() => this.test()}">${item.participants.map(x => ' ' + x.firstName + ' ' + x.lastName + ' ')}</td>

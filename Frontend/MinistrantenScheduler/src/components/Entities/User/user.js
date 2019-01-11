@@ -11,7 +11,7 @@ export class User extends LitElement{
             secPhoneNumber: Number,
             whatsAppRe: Boolean,
             emailRe: Boolean,
-            participants: Array
+            participants: []
         }
     }
 
