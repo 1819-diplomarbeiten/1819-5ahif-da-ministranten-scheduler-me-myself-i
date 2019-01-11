@@ -11,7 +11,8 @@ export class ChurchServiceEvent extends LitElement{
     static get properties() {
         return{
             allParticipants:[],
-            internalDND: Number
+            internalDND: String,
+
         }
     }
 
@@ -19,6 +20,7 @@ export class ChurchServiceEvent extends LitElement{
     constructor() {
         super();
         this.allParticipants = [];
+        this.internalDND = 'part';
         this.allParticipants = HtmlService.getAllParticipant();
         /*let user = this.getAttribute("user");
         let pass = this.getAttribute("pass");
@@ -27,16 +29,25 @@ export class ChurchServiceEvent extends LitElement{
 
      dragStartHandler(event, item) {
          console.log("drag" + event.target.id);
-         event.dataTransfer.setData('text',event.target.id);
-         //this.internalDND = event
+         event.dataTransfer.setData(this.internalDND,item.participantId);
      }
 
     dropHandler(event) {
-        //event.preventDefault();
         console.log("drop")
-        let int = event.dataTransfer.getData('Text');
+        let int = event.dataTransfer.getData(this.internalDND);
+        console.log(int)
 
-        this.shadowRoot.getElementById('test').innerHTML += `<p>${int}</p>`
+        this.shadowRoot.getElementById('test').innerHTML += this.addParticipants(this.allParticipants[int - 1]);
+    }
+
+    addParticipants(inputs) {
+        return `
+            <div draggable="true" id="${inputs.participantId}" @dragstart="${(event)=> this.dragStartHandler(event,inputs)}">
+                <div class="rectangle-Part rconers">
+                    <label class="form-style">${inputs.firstName} ${inputs.lastName}</label>
+                </div>
+            </div>
+        `
     }
 
 

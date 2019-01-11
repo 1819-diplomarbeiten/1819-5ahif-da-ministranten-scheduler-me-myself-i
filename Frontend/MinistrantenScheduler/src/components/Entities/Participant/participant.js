@@ -8,12 +8,14 @@ export class Participant extends LitElement{
             firstName: String,
             lastName: String,
             grad: String,
-            userId: Number
+            userId: Number,
+            appointments: []
         }
     }
 
     constructor() {
         super();
+        this.appointments = [];
     }
 
 

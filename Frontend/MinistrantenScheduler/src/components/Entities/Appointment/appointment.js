@@ -9,12 +9,14 @@ export class Appointment extends LitElement {
             time:Date,
             required_Mini:Number,
             required_Lec:Number,
-            dayId:Number
+            dayId:Number,
+            participants:[]
         }
     }
 
     constructor() {
         super();
+        this.participants = [];
     }
 
     getAppointmentId() {
