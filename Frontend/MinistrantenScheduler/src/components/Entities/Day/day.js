@@ -1,6 +1,6 @@
-import {LitElement} from '@polymer/lit-element';
+//import {LitElement} from '@polymer/lit-element';
 
-export class Day extends LitElement {
+export class Day {
     static get properties() {
         return{
             dayId:Number,
@@ -12,34 +12,15 @@ export class Day extends LitElement {
     }
 
 
-    constructor() {
-        super();
+    constructor(dayId,dayDate,available,deadline,appointments) {
+        this.dayId = dayId;
+        this.dayDate = dayDate;
+        this.available = available;
+        this.deadline = deadline;
+        this.appointments = [];
+        this.appointments = appointments;
     }
 
-    setDayId(value) {
-        this.dayId = value;
-    }
 
-    getDateId() {
-        return this.dayId;
-    }
-    setDayDate(value) {
-        this.dayDate = value;
-    }
-    getDayDate() {
-        return this.dayDate;
-    }
-    setAvailable(value) {
-        this.available = value;
-    }
-    getAvailable() {
-        return this.available;
-    }
-    setDeadline(value) {
-        this.deadline = value;
-    }
-    getDeadline() {
-        return this.deadline;
-    }
 }
-window.customElements.define("day-component",Day);
+//window.customElements.define("day-component",Day);

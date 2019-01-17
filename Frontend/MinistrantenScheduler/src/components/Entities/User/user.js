@@ -1,6 +1,6 @@
-import {LitElement} from '@polymer/lit-element';
+//import {LitElement} from '@polymer/lit-element';
 
-export class User extends LitElement{
+export class User{
     static get properties() {
         return{
             userId:Number,
@@ -15,8 +15,21 @@ export class User extends LitElement{
         }
     }
 
-    constructor() {
-        super();
+    constructor(userId,userName,password,email,phoneNumber,secPhoneNumber,whatsAppRe,emailRe,participants) {
+        //super();
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.secPhoneNumber = secPhoneNumber;
+        this.whatsAppRe = whatsAppRe;
+        this.emailRe = emailRe;
+        this.participants = [];
+        this.participants = participants;
     }
+
+
+
 }
-window.customElements.define('user-component',User)
+//window.customElements.define('user-component',User);

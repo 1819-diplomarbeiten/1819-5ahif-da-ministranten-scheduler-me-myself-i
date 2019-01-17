@@ -30,22 +30,26 @@
     color: white;
     padding: 5px;
     text-align: left;
-    display: inline-flex;
+
 }
 .app-result-style {
     width: 100%;
 }
 
 .App-style {
-    margin: 20px;
-
+    margin: 30px;
+    display: inline-block;
+    float: top;
 }
 
 .app-horizontal-scrollbar {
     overflow-x: scroll;
     overflow-y: hidden;
 
-    width: 100%;
+    position: fixed;
+    display: inline;
+    float: top;
+    width: 70%;
     white-space: nowrap;
 }
 .app-horizontal {

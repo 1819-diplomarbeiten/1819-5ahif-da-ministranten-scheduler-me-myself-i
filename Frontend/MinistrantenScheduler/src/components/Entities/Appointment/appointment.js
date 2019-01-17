@@ -1,6 +1,6 @@
-import {LitElement} from '@polymer/lit-element';
+//import {LitElement} from '@polymer/lit-element';
 
-export class Appointment extends LitElement {
+export class Appointment {
 
 
     static get properties() {
@@ -14,45 +14,15 @@ export class Appointment extends LitElement {
         }
     }
 
-    constructor() {
-        super();
+    constructor(appointmentId,time,required_Mini,required_Lec,dayId,participants) {
+        //super();
+        this.appointmentId = appointmentId;
+        this.time = time;
+        this.required_Mini = required_Mini;
+        this.required_Lec = required_Lec;
+        this.dayId = dayId;
         this.participants = [];
-    }
-
-    getAppointmentId() {
-        return this.appointmentId;
-    }
-
-    setAppointmentId(value) {
-        this.appointmentId = value;
-    }
-
-    getTimeDate() {
-        return this.time;
-    }
-    setTimeDate(value){
-        this.time = value;
-    }
-
-    getRequiredMinistrant() {
-        return this.required_Mini;
-    }
-    setRequiredMinistrant(value) {
-        this.required_Mini = value;
-    }
-    getRequiredLector() {
-        return this.required_Lec;
-    }
-    setRequiredLector(value) {
-        this.required_Lec = value;
-    }
-
-    setDayId(value) {
-        this.dayId = value
-    }
-
-    getDayId() {
-        return this.dayId;
+        this.participants = participants == undefined?[]:participants;
     }
 }
-window.customElements.define("appointment-component",Appointment);
+//window.customElements.define("appointment-component",Appointment);

@@ -1,6 +1,7 @@
 import {html, LitElement} from '@polymer/lit-element';
 import {HtmlService} from '../../services/HtmlClientService/html-service';
 import {repeat} from "@polymer/lit-element/node_modules/lit-html/directives/repeat.js";
+import {User} from "../Entities/User/user";
 
 
 
@@ -12,7 +13,8 @@ export class ChurchServiceEvent extends LitElement{
         return{
             allParticipants:[],
             internalDND: String,
-            allDays:[]
+            allDays:[],
+            monthResult:[]
         }
     }
 
@@ -21,10 +23,30 @@ export class ChurchServiceEvent extends LitElement{
         super();
         this.allParticipants = [];
         this.allDays = [];
+        this.monthResult = [];
         this.internalDND = 'part';
         this.allParticipants = HtmlService.getAllParticipant();
         this.allDays = HtmlService.getAllDays();
-        console.log(this.allDays.length)
+
+
+        let arrays = [];
+        var users = new User();
+        users.userName = "Hallo"
+        arrays.push(users);
+        console.log(arrays[0].userName);
+        console.log(users)
+        arrays.push(new User("Hallo2"))
+        console.log(arrays[1].userName);
+
+        let dat = new Date();
+        dat.setHours(11,30,0);
+        console.log(dat.getHours()+ ":" +dat.getMinutes());
+        dat.setHours(12,12,0);
+        console.log(dat.getHours()+ ":" +dat.getMinutes());
+
+
+        //console.log(this.allDays.length);
+        //this.getAllMonths();
         /*let user = this.getAttribute("user");
         let pass = this.getAttribute("pass");
         console.log(user+ "  "+pass);*/
@@ -39,7 +61,8 @@ export class ChurchServiceEvent extends LitElement{
         console.log("drop")
         let int = event.dataTransfer.getData(this.internalDND);
 
-        this.allDays[item.dayId - 1].appointments[0].participants.push(this.allParticipants[int - 1]);
+        let i = this.allParticipants[int - 1];
+        this.allDays[item.dayId - 1].appointments[0].participants.push(i);
         this.shadowRoot.getElementById('App'+item.dayId).innerHTML += this.addParticipants(this.allParticipants[int - 1]);
     }
 
@@ -53,6 +76,33 @@ export class ChurchServiceEvent extends LitElement{
         `
     }
 
+    getAllMonths() {
+        var res = 0;
+        var months = [];
+        for (let i = 0;i< this.allDays.length;i++){
+
+            let t = new Date(this.stringToDate(this.allDays[1].dayDate,"dd.MM.yyyy","."));
+            for (let i = 0;i< this.allDays.length;i++){
+
+            }
+            if (t.getMonth() + 1) {
+
+            }
+        }
+    }
+    stringToDate(_date,_format,_delimiter)
+    {
+        var formatLowerCase=_format.toLowerCase();
+        var formatItems=formatLowerCase.split(_delimiter);
+        var dateItems=_date.split(_delimiter);
+        var monthIndex=formatItems.indexOf("mm");
+        var dayIndex=formatItems.indexOf("dd");
+        var yearIndex=formatItems.indexOf("yyyy");
+        var month=parseInt(dateItems[monthIndex]);
+        month-=1;
+        var formatedDate = new Date(dateItems[yearIndex],month,dateItems[dayIndex]);
+        return formatedDate;
+    }
 
 
 
@@ -78,20 +128,25 @@ export class ChurchServiceEvent extends LitElement{
                     ${repeat(this.allParticipants,(item) => html`
                                                             <div draggable="true" @dragstart="${(event)=> this.dragStartHandler(event,item)}">
                                                                 <div class="rectangle-Part rconers">
-                                                                    <label class="form-style">${item.firstName} ${item.lastName}</label>
+                                                                    <label class="form-style">${item.toNameString()}</label>
                                                                 </div>
                                                             </div>
                                                             `)}
                 </div>  
             </div>
             <div class="col-md-10">
-                <div id="Appo" class="row app-result-style" style="padding-left: 20%">
+                <div id="Appo" class="row app-result-style row" style="padding-left: 10%">
                     <div class="app-horizontal">
-                        <div class="app-horizontal-scrollbar row">
+                        
+                        
+                        
+                        
+                        <div class="app-horizontal-scrollbar">
                             ${repeat(this.allDays,(item) => html`
+                                                              
                                                               <div class="rectangle-Appo rconers App-style">
                                                                   <div class="col-md-12">
-                                                                      <label class="form-style col-md-12" style="padding: 10px; text-align: center; border-bottom: #0c5460 1px solid;">Montag</label>
+                                                                      <label class="form-style col-md-12" style="padding: 10px; text-align: center; border-bottom: #0c5460 1px solid;">${item.dayDate}</label>
                                                                   </div>                
                                                                   <div style="height: 200px;width: 300px;" id="App${item.dayId}" @dragover="${(event) => event.preventDefault()}" @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event,item)}">
                                                                 
