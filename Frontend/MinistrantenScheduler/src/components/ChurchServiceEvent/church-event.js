@@ -47,10 +47,10 @@ export class ChurchServiceEvent extends LitElement{
     dropHandler(event,item) {
         console.log("drop");
         let int = event.dataTransfer.getData(this.internalDND);
-        
+
         //this.allDays[item.dayId - 1].appointments[0].participants.push(this.allParticipants[int - 1]);
         //let i = this.shadowRoot.getElementById('App'+item.dayId);
-        this.shadowRoot.getElementById('App'+item.dayId).innerHTML += this.addParticipants(this.allParticipants[int - 1]);
+        //this.shadowRoot.getElementById('App'+item.dayId).innerHTML += this.addParticipants(this.allParticipants[int - 1]);
     }
 
     addParticipants(inputs) {
@@ -126,14 +126,12 @@ export class ChurchServiceEvent extends LitElement{
                                                                   
                                                                   <div class="rectangle-Appo rconers App-style row">
                                                                       <div class="col-md-12">
-                                                                          <label class="form-style col-md-12" style="padding: 10px; text-align: center; border-bottom: #0c5460 1px solid;">${item.dayDate.getDate()}-${item.dayDate.getMonth()+1}-${item.dayDate.getFullYear()}</label>
+                                                                          <label class="App-Header form-style col-md-12">${item.toDayString()}</label>
                                                                       </div>             
                                                                       
-                                                                      <table class="table" @dragover="${(event) => event.preventDefault()}" @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event,item)}"> 
-                                                                           <tbody id="App${item.dayId}">
-                                                                                
-                                                                            </tbody>
-                                                                      </table> 
+                                                                      <div id="App${item.dayId}" @dragover="${(event) => event.preventDefault()}" @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event,item)}"> 
+                                                                           
+                                                                      </div> 
                                                                       
                                                                   </div>     
                                                                                                             

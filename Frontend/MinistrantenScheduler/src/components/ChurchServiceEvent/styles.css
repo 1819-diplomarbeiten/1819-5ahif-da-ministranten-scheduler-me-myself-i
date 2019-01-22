@@ -36,6 +36,11 @@
     width: 100%;
 }
 
+.App-Header {
+    padding: 10px;
+    text-align: center;
+    border-bottom: #0c5460 1px solid;
+}
 .App-style {
     margin: 30px;
     display: inline-block;

@@ -21,6 +21,9 @@ export class Day {
         this.appointments = appointments;
     }
 
+    toDayString() {
+        return "" + this.dayDate.getDate() + "-" + (this.dayDate.getMonth()+1) + "" + this.dayDate.getFullYear() + "";
+    }
 
 }
 //window.customElements.define("day-component",Day);
