@@ -25,6 +25,15 @@ export class Participant {
     }
 
 
+    addAppointments(item) {
+        this.appointments.push(item);
+    }
+
+    removeAppointment(item) {
+        let searchItem = this.appointments.find(p => p.appointmentId == item.appointmentId);
+        this.appointments.splice(this.appointments.indexOf(searchItem),1);
+    }
+
     toNameString() {
         return "" + this.firstName + " " + this.lastName + "";
     }
