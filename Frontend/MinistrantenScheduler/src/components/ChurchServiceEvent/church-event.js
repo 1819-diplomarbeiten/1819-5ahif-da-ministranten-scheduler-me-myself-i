@@ -24,10 +24,11 @@ export class ChurchServiceEvent extends LitElement{
         this.allParticipants = [];
         this.allDays = [];
         this.monthResult = [];
+        this.monthResult = [];
         this.internalDND = 'part';
         this.allParticipants = HtmlService.getAllParticipant();
         this.allDays = HtmlService.getAllDays();
-
+        this.monthResult = this.getAllMonths();
 
         /*let user = this.getAttribute("user");
         let pass = this.getAttribute("pass");
@@ -44,11 +45,11 @@ export class ChurchServiceEvent extends LitElement{
     }
 
     dropHandler(event,item) {
-        console.log("drop")
+        console.log("drop");
         let int = event.dataTransfer.getData(this.internalDND);
-
-        this.allDays[item.dayId - 1].appointments[0].participants.push(this.allParticipants[int - 1]);
-        let i = this.shadowRoot.getElementById('App'+item.dayId);
+        
+        //this.allDays[item.dayId - 1].appointments[0].participants.push(this.allParticipants[int - 1]);
+        //let i = this.shadowRoot.getElementById('App'+item.dayId);
         this.shadowRoot.getElementById('App'+item.dayId).innerHTML += this.addParticipants(this.allParticipants[int - 1]);
     }
 
@@ -63,16 +64,19 @@ export class ChurchServiceEvent extends LitElement{
     }
 
     getAllMonths() {
-        var res = 0;
-        var months = [];
-        for (let i = 0;i< this.allDays.length;i++){
+        let months = [];
+        months.push(this.allDays[0].dayDate.getMonth() + 1);
+        for (let i = 1;i< this.allDays.length;i++){
+            let checker = true;
+            let t = this.allDays[i].dayDate.getMonth() + 1;
+            for (let j = 0;j< months.length;i++) {
 
-            let t = new Date(HtmlService.stringToDate(this.allDays[1].dayDate,"dd.MM.yyyy","."));
-            for (let i = 0;i< this.allDays.length;i++) {
-
-                if (t.getMonth() + 1) {
-
+                if (t == months[j]) {
+                    checker = false;
                 }
+            }
+            if (checker == true) {
+                months.push(t);
             }
         }
     }
