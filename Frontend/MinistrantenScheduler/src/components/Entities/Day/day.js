@@ -22,7 +22,7 @@ export class Day {
     }
 
     toDayString() {
-        return "" + this.dayDate.getDate() + "-" + (this.dayDate.getMonth()+1) + "" + this.dayDate.getFullYear() + "";
+        return "" + this.dayDate.getDate() + "-" + (this.dayDate.getMonth()+1) + "-" + this.dayDate.getFullYear() + "";
     }
 
 }
