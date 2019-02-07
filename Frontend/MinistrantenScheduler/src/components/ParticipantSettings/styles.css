@@ -6,15 +6,15 @@
 
 .fixed_header tbody{
     display: block;
-    width: 100%;
+    width: 90%;
     overflow: auto;
-    height: 400px;
+    height: 50%;
 
 }
 
 .fixed_header thead tr {
     display: block;
-    width: 100%;
+    width: 93%;
 
 }
 
@@ -33,7 +33,15 @@ table {
     alignment: center;
 }
 
-
+.back-reply-button{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background: url("../Images/reply-all-button.png");
+    background-size: cover;
+}
 
 
 

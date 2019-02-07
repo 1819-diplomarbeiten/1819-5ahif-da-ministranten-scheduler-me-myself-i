@@ -26,7 +26,7 @@ export class ParticipantSettings extends LitElement{
         if (this.selectedParticipant != null) {
             this.allParticipants[this.count].firstName = this.shadowRoot.getElementById('firstName').value;
             this.allParticipants[this.count].lastName = this.shadowRoot.getElementById('lastName').value;
-            this.allParticipants[this.count].grad = this.shadowRoot.getElementById('grad').value;
+            this.allParticipants[this.count].grad = this.shadowRoot.getElementById('grad').selectedOptions[0].innerText;
             this.allParticipants[this.count].userId = this.shadowRoot.getElementById('userName').value;
         }
         this.count = input - 1;
@@ -37,13 +37,21 @@ export class ParticipantSettings extends LitElement{
                 this.selectedParticipant = this.allParticipants[i];
                 this.shadowRoot.getElementById('firstName').value = this.selectedParticipant.firstName;
                 this.shadowRoot.getElementById('lastName').value = this.selectedParticipant.lastName;
-                this.shadowRoot.getElementById('grad').value = this.selectedParticipant.grad;
+                this.shadowRoot.getElementById('grad').selectedOptions[0].innerText = this.selectedParticipant.grad;
                 this.shadowRoot.getElementById('userName').value = this.selectedParticipant.userId;
             }
         }
     }
 
-    
+    safeState(){
+        if (this.selectedParticipant != null) {
+            this.allParticipants[this.count].firstName = this.shadowRoot.getElementById('firstName').value;
+            this.allParticipants[this.count].lastName = this.shadowRoot.getElementById('lastName').value;
+            this.allParticipants[this.count].grad = this.shadowRoot.getElementById('grad').selectedOptions[0].innerText;
+            this.allParticipants[this.count].userId = this.shadowRoot.getElementById('userName').value;
+        }
+        console.log("safe")
+    }
 
 
     render() {
@@ -56,11 +64,15 @@ export class ParticipantSettings extends LitElement{
         <link rel="stylesheet" type="text/css" href="/src/components/ParticipantSettings/styles.css">
         
         
+        <a class="back-reply-button" @click="${() => this.safeState()}">
         
-        <h1 style="display: block; align-items: center;">Mitarbeiter-Settings</h1>
+        </a>
+        
+        
+        <h1 style="transform: translate(30%);">Mitarbeiter-Settings</h1>
         <br>
-        <div class="col-sm-12" style="padding-top: 220px">
-            <div class="col-md-8">
+        <div class="col-sm-12 row" style="padding-top: 220px">
+            <div class="col-md-7">
                 <table id="table" class="table table-hover fixed_header">
                     <thead>
                         <tr>
@@ -95,7 +107,10 @@ export class ParticipantSettings extends LitElement{
                     </div>
                     <div class="div-form">
                         <label>Kreis:</label>
-                        <input id="grad" type="text" class="form-control">
+                        <select class="form-control" id="grad">
+                            <option selected class="form-control">Ministrant</option>
+                            <option class="form-control">Lektor</option>
+                        </select>
                     </div>
                     <div class="div-form">
                         <label>User:</label>

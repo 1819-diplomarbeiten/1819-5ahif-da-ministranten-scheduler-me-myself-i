@@ -15,6 +15,8 @@ export class AccountSetting extends LitElement{
         super();
         this.selectedUser = new User();
         this.selectedUser = HtmlService.getUserById(1);
+        let current = this.shadowRoot;
+
     }
 
 
@@ -28,7 +30,33 @@ export class AccountSetting extends LitElement{
         alert("Gespeichert");
         this.backToMain();
     }
+    getCheckerWA() {
+        if(this.selectedUser != null) {
+            if (this.selectedUser.whatsAppRe == true) {
+                this.shadowRoot.getElementById('whatsappRe').checked = true;
+            }
+            else {
+                this.shadowRoot.getElementById('whatsappRe').checked = false;
+            }
+        }
+    }
+
+    getCheckerEM() {
+        if(this.selectedUser != null) {
+            if (this.selectedUser.emailRe == true) {
+                this.shadowRoot.getElementById('emailRe').checked = true;
+            }
+            else {
+                this.shadowRoot.getElementById('emailRe').checked = false;
+            }
+        }
+    }
+
     render() {
+        $(document).ready(() => {
+            this.getCheckerEM();
+            this.getCheckerWA();
+        });
         return html`
                 <!--======================================Wichtig==================================================-->
                 <script lang="javascript" src="/node_modules/jquery/dist/jquery.js"></script>
@@ -42,49 +70,49 @@ export class AccountSetting extends LitElement{
                     <form>
                         <div class="row form-settings">
                             <label class="label-set">Username:</label>
-                            <input class="input-set" type="text" id="userName">
+                            <input class="input-set" type="text" id="userName" value="${this.selectedUser.userName}">
                         </div>
                         <div class="row form-settings">
                             <label class="label-set">Password:</label>
-                            <input class="input-set" type="text" id="password">
+                            <input class="input-set" type="text" id="password" value="${this.selectedUser.password}">
                         </div>
                         <div class="row form-settings">
                             <label class="label-set">Email:</label>
-                            <input class="input-set" type="text" id="email">
+                            <input class="input-set" type="text" id="email" value="${this.selectedUser.email}">
                         </div>
                         <div class="row form-settings">
                             <label class="label-set">Telefon:</label>
-                            <input class="input-set" type="number" id="phone">
+                            <input class="input-set" type="number" id="phone" value="${this.selectedUser.phoneNumber}">
                         </div>
                         <div class="row form-settings">
                             <label class="label-set">Zweites Telefon:</label>
-                            <input class="input-set" type="number" id="phoneSec">
+                            <input class="input-set" type="number" id="phoneSec" value="${this.selectedUser.secPhoneNumber}">
                         </div>
                         <div class="row form-settings">
                             <label class="label-set-checkbox">Whatsapp Erinnerung:</label>
-                            <input class="input-set-checkbox" type="checkbox" id="whatsappRe">
+                            <input class="input-set-checkbox" type="checkbox" id="whatsappRe" >
                         </div>
                         <div class="row form-settings">
                             <label class="label-set-checkbox">Email Erinnerung:</label>
                             <input class="input-set-checkbox" type="checkbox" id="emailRe">
                         </div>
                         
-                            ${repeat(this.selectedUser[0].participants,(item) => html`
+                            ${repeat(this.selectedUser.participants,(item) => html`
                                                                                 <div class="form-settings">
                                                                                     <form>
                                                                                     <h2>Mitarbeiter</h2>
                                                                                         <div>
                                                                                             <div class="row form-settings">
                                                                                                 <label class="label-set">Vorname</label>
-                                                                                                <input class="input-set" type="text" id="Vor${item.participantId}">
+                                                                                                <input class="input-set" type="text" id="Vor${item.participantId}" value="${item.firstName}">
                                                                                             </div>
                                                                                             <div class="row form-settings">
                                                                                                 <label class="label-set">Nachname</label>
-                                                                                                <input class="input-set" type="text" id="Nach${item.participantId}">
+                                                                                                <input class="input-set" type="text" id="Nach${item.participantId}" value="${item.lastName}">
                                                                                             </div>
                                                                                             <div class="row form-settings">
                                                                                                 <label class="label-set">Mitarbeiterkreis</label>
-                                                                                                <input class="input-set" type="text" id="grad${item.participantId}">
+                                                                                                <input class="input-set" type="text" id="grad${item.participantId}" value="${item.grad}" disabled>
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
