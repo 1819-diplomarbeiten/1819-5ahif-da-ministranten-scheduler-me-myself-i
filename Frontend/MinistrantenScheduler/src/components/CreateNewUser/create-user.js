@@ -20,6 +20,11 @@ export class CreateNewUser extends LitElement{
     }
 
 
+    /*
+    *
+    * Hinzufügung eines weiteren Teilnehmer
+    *
+    * */
     addEventParticipant() {
         var part = new Participant();
         this.count++;
@@ -27,24 +32,44 @@ export class CreateNewUser extends LitElement{
         this.getParticipants.push(part);
     }
 
+    /*
+    *
+    * Löschung des weiteren Teilnehmer
+    *
+    * */
     deleteEventParticipant() {
         this.getParticipants.pop();
         this.count--;
     }
 
 
+    /*
+    *
+    * Speichert und Merged alle Daten
+    *
+    * */
     safeUser() {
         alert("Safe")
         this.getAllUserDatas();
         console.log(this.getUser)
     }
 
+    /*
+    *
+    *Zurück gehen zur Startseite
+    *
+    * */
     backComponent() {
         let root = document.querySelector("ministranten-verwaltung");
         let component = root.shadowRoot.querySelector("#components");
         component.innerHTML = `<church-event-component></church-event-component>`
     }
 
+    /*
+    *
+    * Hollt alle Daten und steckt sie in eine User Klasse
+    *
+    * */
     getAllUserDatas() {
         let elem = this.shadowRoot;
         this.getAllParticipants();
@@ -57,6 +82,12 @@ export class CreateNewUser extends LitElement{
             elem.getElementById('emRe').checked,
             this.getParticipants);
     }
+
+    /*
+    *
+    * Hollt alle Daten die sich im Repeater befinden und steckt sie in die Klasse Teilnehemer
+    *
+    * */
     getAllParticipants() {
         if (this.count > 0) {
             let it = this.shadowRoot;

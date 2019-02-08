@@ -21,6 +21,11 @@ export class CreateNewChurchEvent extends LitElement{
         this.count = 0;
     }
 
+    /*
+    *
+    * Hinzufügung eines weiteren Termins
+    *
+    * */
     addEventChurch() {
         var apps = new Appointment();
         this.count++;
@@ -28,23 +33,43 @@ export class CreateNewChurchEvent extends LitElement{
         this.getAppointments.push(apps);
     }
 
+    /*
+    *
+    * Löschung des weiteren Termins
+    *
+    * */
     deleteEventChurch() {
         this.getAppointments.pop();
         this.count--;
     }
 
+    /*
+    *
+    * Speichert und Merged alle Daten
+    *
+    * */
     safeDay() {
         alert("Safe");
         this.getAllDayDatas();
         console.log(this.getDay)
     }
 
+    /*
+    *
+    *Zurück gehen zur Startseite
+    *
+    * */
     backComponent() {
         let root = document.querySelector("ministranten-verwaltung");
         let component = root.shadowRoot.querySelector("#components");
         component.innerHTML = `<church-event-component></church-event-component>`
     }
 
+    /*
+    *
+    * Hollt alle Daten und steckt sie in eine Tag Klasse
+    *
+    * */
     getAllDayDatas() {
         let elem = this.shadowRoot;
         this.getAllAppointments();
@@ -56,6 +81,11 @@ export class CreateNewChurchEvent extends LitElement{
             this.getAppointments);
     }
 
+    /*
+    *
+    * Hollt alle Daten die sich im Repeater befinden und steckt sie in die Klasse Termin
+    *
+    * */
     getAllAppointments() {
         if (this.count > 0) {
             let it = this.shadowRoot;

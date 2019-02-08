@@ -15,7 +15,11 @@ export class Login extends LitElement {
 
 
 
-
+    /*
+    *
+    * Prüft die Daten des Benutzers
+    *
+    * */
 
     checkLogin() {
         console.log("click event login :" );
@@ -63,9 +67,9 @@ export class Login extends LitElement {
 			                <a href="#">Lost your password?</a> 
                         </div>
                         </div>
-		            </form><!-- form -->
-	            </section><!-- content -->
-            </div><!-- container -->
+		            </form>
+	            </section>
+            </div>
        
         `;
     }

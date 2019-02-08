@@ -20,16 +20,32 @@ export class AccountSetting extends LitElement{
     }
 
 
+    /*
+    *
+    *Zurück gehen zur Startseite
+    *
+    * */
     backToMain() {
         let root = document.querySelector("ministranten-verwaltung");
         let component = root.shadowRoot.querySelector('#components');
         component.innerHTML = `<church-event-component></church-event-component>`;
     }
 
-    safeObject() {
+    /*
+    *
+    * Safe der letzten Änderung der Daten
+    *
+    * */
+    safeState() {
         alert("Gespeichert");
         this.backToMain();
     }
+
+    /*
+    *
+    * Überprüft ob Checkbox gechecked ist
+    *
+    * */
     getCheckerWA() {
         if(this.selectedUser != null) {
             if (this.selectedUser.whatsAppRe == true) {
@@ -41,6 +57,11 @@ export class AccountSetting extends LitElement{
         }
     }
 
+    /*
+    *
+    * Überprüft ob Checkbox gechecked ist
+    *
+    * */
     getCheckerEM() {
         if(this.selectedUser != null) {
             if (this.selectedUser.emailRe == true) {
@@ -52,6 +73,8 @@ export class AccountSetting extends LitElement{
         }
     }
 
+
+    /***********************************************render*************************************************************/
     render() {
         $(document).ready(() => {
             this.getCheckerEM();
@@ -122,7 +145,7 @@ export class AccountSetting extends LitElement{
                     </form>
                     <div class="button-styling">
                         <button class="btn btn-danger btn-back" @click="${() => this.backToMain()}">Zurück</button>
-                        <button class="btn btn-success btn-safe" @click="${() => this.safeObject()}">Speichern</button>
+                        <button class="btn btn-success btn-safe" @click="${() => this.safeState()}">Speichern</button>
                     </div>
                 </div>
         

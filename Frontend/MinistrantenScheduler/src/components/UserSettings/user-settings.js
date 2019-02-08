@@ -22,6 +22,11 @@ export class UserSettings extends LitElement{
         this.allUser = HtmlService.getAllUser()
     }
 
+    /*
+    *
+    * (Two way Binding)Binding zwischen dem Elemente von der Tabelle und der in der Form selected User
+    *
+    * */
     setForm(input) {
         if (this.selectedUser != null) {
             this.allUser[this.count].userName = this.shadowRoot.getElementById('userName').value;
@@ -49,6 +54,11 @@ export class UserSettings extends LitElement{
         }
     }
 
+    /*
+    *
+    * Überprüft ob Checkbox gechecked ist
+    *
+    * */
     getCheckerWA() {
         if(this.selectedUser != null) {
             if (this.selectedUser.whatsAppRe == true) {
@@ -59,7 +69,11 @@ export class UserSettings extends LitElement{
             }
         }
     }
-
+    /*
+    *
+    * Überprüft ob Checkbox gechecked ist
+    *
+    * */
     getCheckerEM() {
         if(this.selectedUser != null) {
             if (this.selectedUser.emailRe == true) {
@@ -75,6 +89,11 @@ export class UserSettings extends LitElement{
         alert("Click");
     }
 
+    /*
+    *
+    * Safe der letzten Änderung der Daten
+    *
+    * */
     safeState() {
         if (this.selectedUser != null) {
             this.allUser[this.count].userName = this.shadowRoot.getElementById('userName').value;

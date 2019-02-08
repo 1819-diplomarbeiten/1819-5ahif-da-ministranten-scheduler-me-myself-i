@@ -21,6 +21,11 @@ export class ParticipantSettings extends LitElement{
         this.allParticipants = HtmlService.getAllParticipant();
     }
 
+    /*
+    *
+    * (Two way Binding)Binding zwischen dem Elemente von der Tabelle und der in der Form selected Teilnehmer
+    *
+    * */
     setForm(input) {
 
         if (this.selectedParticipant != null) {
@@ -43,6 +48,11 @@ export class ParticipantSettings extends LitElement{
         }
     }
 
+    /*
+    *
+    * Safe der letzten Änderung der Daten
+    *
+    * */
     safeState(){
         if (this.selectedParticipant != null) {
             this.allParticipants[this.count].firstName = this.shadowRoot.getElementById('firstName').value;
