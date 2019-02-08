@@ -75,6 +75,19 @@ export class UserSettings extends LitElement{
         alert("Click");
     }
 
+    safeState() {
+        if (this.selectedUser != null) {
+            this.allUser[this.count].userName = this.shadowRoot.getElementById('userName').value;
+            this.allUser[this.count].password = this.shadowRoot.getElementById('password').value;
+            this.allUser[this.count].email = this.shadowRoot.getElementById('email').value;
+            this.allUser[this.count].phoneNumber = this.shadowRoot.getElementById('phone').value;
+            this.allUser[this.count].secPhoneNumber = this.shadowRoot.getElementById('phone_two').value;
+            this.allUser[this.count].whatsAppRe = this.shadowRoot.getElementById('check_whatsApp').checked;
+            this.allUser[this.count].emailRe = this.shadowRoot.getElementById('check_email').checked;
+        }
+        console.log("safe");
+    }
+
     /***********************************************render*************************************************************/
     render() {
         return html`
@@ -85,9 +98,15 @@ export class UserSettings extends LitElement{
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="/src/components/UserSettings/styles.css">
 
-        <h1 style="display: block; align-items: center;">User-Settings</h1>
+
+        <a class="back-reply-button" @click="${() => this.safeState()}">
+        
+        </a>
+
+
+        <h1 style="transform: translate(30%);">User-Settings</h1>
         <br>
-        <div class="col-sm-12v row" style="padding-top: 220px">
+        <div class="col-sm-12 row" style="padding-top: 220px">
             <div class="col-md-8">
                 <table id="table" class="table fixed_header table-hover">
                     <thead>
@@ -110,7 +129,7 @@ export class UserSettings extends LitElement{
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-4 form-border">
+            <div class="col-md-3 form-border">
                 <form class="login-form validate-input">
                     <div class="div-form">
                         <label>User:</label>

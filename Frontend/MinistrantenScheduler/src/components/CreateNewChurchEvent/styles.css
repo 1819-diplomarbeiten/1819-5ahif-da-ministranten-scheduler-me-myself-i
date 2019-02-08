@@ -19,11 +19,10 @@
     margin-left: 20px;
 }
 .button-print {
-    display: flex;
-    align-items: stretch;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-
-    padding: 25px 15px 25px 50px;
+    padding-top: 20px;
 }
 .button-stack {
     width: 100%;
@@ -36,4 +35,16 @@
 .text-color-back-button {
     color: white;
     background-color: darkred;
+}
+.form-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(10%);
+}
+
+h1,h3{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    transform: translate(-10%);
 }

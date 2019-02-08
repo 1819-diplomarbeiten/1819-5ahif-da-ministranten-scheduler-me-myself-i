@@ -19,11 +19,9 @@
     margin-left: 20px;
 }
 .button-print {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-
-    padding: 25px 15px 25px 50px;
+    margin: 0px;
+    left: 0px;
+    padding-top: 30px;
 }
 
 .button-return {
@@ -39,6 +37,22 @@
     background-color: darkred;
 }
 .button-stack {
-    width: 100%;
+    width: 60%;
     height: 30px;
+}
+
+.form-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+}
+h1,h3 {
+    left: 0px;
+    padding-bottom: 20px;
+    transform: translate(-5%);
+}
+.custom-style{
+    padding-left: 40px;
+    padding-right: 20px;
 }

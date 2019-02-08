@@ -27,23 +27,16 @@ class MinistrantenVerwaltung extends LitElement {
     }
 
 
-
-/*<!--<create-event-component></create-event-component>-->
-<!--<create-church-event-component></create-church-event-component>-->
-<!--<user-settings-component></user-settings-component>-->
-<create-church-event-component></create-church-event-component>
-<!--<create-church-event-component></create-church-event-component>-->*/
-
-
-
-
   render() {
       return html`
         <div id="components">
-            <!--<login-component></login-component>                     <account-setting-component></account-setting-component>-->
-            <!--<create-user-component></create-user-component> <user-settings-component></user-settings-component>     <church-event-component></church-event-component>-->
+            <!--<login-component></login-component>   <create-church-event-component></create-church-event-component>   <create-user-component></create-user-component>              
+             <account-setting-component></account-setting-component>-->
+            <!-- <user-settings-component></user-settings-component>     <church-event-component></church-event-component>-->
             <!--<participant-settings-component></participant-settings-component>-->
-            <!--<church-event-component></church-event-component>-->
+            
+            <!--
+            <church-event-component></church-event-component>-->
             <!---->
         </div>
       `;
