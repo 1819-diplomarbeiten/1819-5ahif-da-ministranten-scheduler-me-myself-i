@@ -20,7 +20,6 @@ export class ChurchServiceEvent extends LitElement {
         }
     }
 
-
     constructor() {
         super();
         this.allParticipants = [];
@@ -34,6 +33,9 @@ export class ChurchServiceEvent extends LitElement {
         this.allDays = HtmlService.getAllDays();
         this.allAppointments = HtmlService.getAllAppointments();
         this.monthResult = this.getAllMonths();
+
+
+
 
         /*let user = this.getAttribute("user");
         let pass = this.getAttribute("pass");
@@ -74,8 +76,50 @@ export class ChurchServiceEvent extends LitElement {
     }
 
 
+    navbarMenu() {
+        let nav = this.shadowRoot.getElementById('nav'),
+            main = this.shadowRoot.getElementById('main');
+
+        //open = !open ? true : false;
+        nav.classList.toggle('menu-active');
+        main.classList.toggle('menu-active');
+        nav.classList.remove('menu-hover');
+        main.classList.remove('menu-hover');
+    }
+
+    navbarHoverOver() {
+        let nav = this.shadowRoot.getElementById('nav'),
+            main = this.shadowRoot.getElementById('main');
+        //nav.addClass('menu-hover');
+        nav.classList.add('menu-hover');
+        main.classList.add('menu-hover');
+    }
+
+    navbarHoverOut() {
+        let nav = this.shadowRoot.getElementById('nav'),
+            main = this.shadowRoot.getElementById('main');
+        nav.classList.remove('menu-hover');
+        main.classList.remove('menu-hover');
+    }
+
     /******************************************Render******************************************************************/
     render() {
+        $(document).ready(() => {
+            let menu = this.shadowRoot.getElementById('container')
+
+            menu.addEventListener('click',() => this.navbarMenu())
+            /*menu.addEventListener('click', function() {
+                open = !open ? true : false;
+                nav.toggleClass('menu-active');
+                main.toggleClass('menu-active');
+                nav.removeClass('menu-hover');
+                main.removeClass('menu-hover');
+                console.log(open);
+            });*/
+
+            menu.addEventListener('mouseover',() => this.navbarHoverOver());
+            menu.addEventListener('mouseout',() => this.navbarHoverOut());
+        });
         return html`
         <!--======================================Wichtig==================================================-->
         <script lang="javascript" src="/node_modules/jquery/dist/jquery.js"></script>
@@ -86,69 +130,86 @@ export class ChurchServiceEvent extends LitElement {
         
         
         
-
-         
-            <div>
-                <h1>Drag&Drop</h1>
-            </div> 
-             
-            <br>
-            <div class="row">
-                <div class="col-md-2" style="border-right: black 1px solid;">             
-                    <div>
-                        ${repeat(this.allParticipants, (item) => html`
-                                                                    <div draggable="true" @dragstart="${(event) => this.dragStartHandler(event, item)}">
-                                                                        <div class="rectangle-Part rconers">
-                                                                            <label class="form-style">${item.toNameString()}</label>
+        <nav id="nav" class="menu-activea">
+            <h1 id="container">NAVBAR</h1>
+            <ul>
+                <li>HOME</li>
+                <li>GALLERY</li>
+                <li>TEAM</li>
+                <li>SERVICES</li>
+                <li>ABOUT</li>
+                <li>WORK</li>
+                <li>FAQ</li>
+            </ul>
+        </nav>
+        
+        
+        <div class="body">
+        <div id="main">
+            <section class="result-style">
+                <div>
+                    <h1 id="title">Startseite</h1>
+                </div> 
+                 
+                <br>
+                <div class="row">
+                    <div class="col-md-2" style="border-right: black 1px solid;">             
+                        <div>
+                            ${repeat(this.allParticipants, (item) => html`
+                                                                        <div draggable="true" @dragstart="${(event) => this.dragStartHandler(event, item)}">
+                                                                            <div class="rectangle-Part rconers">
+                                                                                <label class="form-style">${item.toNameString()}</label>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                        `)}
-                    </div>  
-                </div>
-                <div class="col-md-10 app-max-size">
-                    <div id="Appo" class=" app-result-style" style="padding-left: 10%">
-                          
-                            
-                        ${repeat(this.getAllMonths(), (months) => html`
-                            
-                            <div id="${months}">
-                                <div class="app-horizontal row">
-                                    <label>${months}</label>
-                                    <div class="app-horizontal-scrollbar">
-                                        ${repeat(this.allDays.filter(p => p.dayDate.getMonth() + 1 == months), (days) => html`
-                                                                          <div class="rectangle-Appo rconers App-style">
-                                                                              <div class="col-md-12">
-                                                                                  <label class="App-Header form-style col-md-12">${days.toDayString()}</label>
-                                                                              </div>             
-                                                                              
-                                                                              ${repeat(days.appointments,(app) => html`                                                                             
-                                                                                  <div class="Appointment-Inbox" id="App${app.appointmentId}" @dragover="${(event) => event.preventDefault()}" 
-                                                                                        @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event, this.allDays.indexOf(days), days.appointments.indexOf(app))}"> 
-                                                                                        ${repeat(app.participants,(parts) => html`
-                                                                                                                                <div draggable="true" @dragstart="${(event) => this.dragContinueHandler(event)}">
-                                                                                                                                    <div class="rectangle-Part rconers">
-                                                                                                                                        <label class="form-style">${parts.toNameString()}</label>
-                                                                                                                                    </div>
-                                                                                                                                </div>
-                                                                                        
-                                                                                        `)}
-                                                                                      
-                                                                                  </div>
-                                                                              `)}                                                                              
-                                                                          </div>                                               
-                                        `)}
+                            `)}
+                        </div>  
+                    </div>
+                    <div class="col-md-10 app-max-size">
+                        <div id="Appo" class=" app-result-style" style="padding-left: 10%">
+                              
+                                
+                            ${repeat(this.getAllMonths(), (months) => html`
+                                
+                                <div id="${months}">
+                                    <div class="app-horizontal row">
+                                        <label>${months}</label>
+                                        <div class="app-horizontal-scrollbar">
+                                            ${repeat(this.allDays.filter(p => p.dayDate.getMonth() + 1 == months), (days) => html`
+                                                                              <div class="rectangle-Appo rconers App-style">
+                                                                                  <div class="col-md-12">
+                                                                                      <label class="App-Header form-style col-md-12">${days.toDayString()}</label>
+                                                                                  </div>             
+                                                                                  
+                                                                                  ${repeat(days.appointments,(app) => html`                                                                             
+                                                                                      <div class="Appointment-Inbox" id="App${app.appointmentId}" @dragover="${(event) => event.preventDefault()}" 
+                                                                                            @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event, this.allDays.indexOf(days), days.appointments.indexOf(app))}"> 
+                                                                                            ${repeat(app.participants,(parts) => html`
+                                                                                                                                    <tr draggable="true" @dragstart="${(event) => this.dragContinueHandler(event)}">
+                                                                                                                                        <td class="rectangle-Part rconers">
+                                                                                                                                            <label class="form-style">${parts.toNameString()}</label>
+                                                                                                                                        </td>
+                                                                                                                                    </tr>
+                                                                                            
+                                                                                            `)}
+                                                                                          
+                                                                                      </div>
+                                                                                  `)}                                                                              
+                                                                              </div>                                               
+                                            `)}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                        `)}
                                 
+                            `)}
+                                    
+                                    
                                 
-                            
+                        </div>
                     </div>
                 </div>
-            </div>
-         
+            </section> 
+        </div>
+        </div>
         `;
     }
 

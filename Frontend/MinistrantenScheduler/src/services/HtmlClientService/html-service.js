@@ -43,7 +43,7 @@ export class HtmlService{
     static getAllDays() {
         let time = new Date();
         return [
-            new Day(1,this.stringToDate('17.04.2019',"dd.MM.yyyy","."),this.stringToDate('20.04.2019',"dd.MM.yyyy","."),this.stringToDate('30.04.2019',"dd.MM.yyyy","."),[new Appointment(1,time.setHours(11,30,0),7,2,1),new Appointment(2,time.setHours(14,30,0),4,2,1),new Appointment(3,time.setHours(21,30,0),9,0,1)]),
+            new Day(1,this.stringToDate('17.05.2019',"dd.MM.yyyy","."),this.stringToDate('20.04.2019',"dd.MM.yyyy","."),this.stringToDate('30.04.2019',"dd.MM.yyyy","."),[new Appointment(1,time.setHours(11,30,0),7,2,1),new Appointment(2,time.setHours(14,30,0),4,2,1),new Appointment(3,time.setHours(21,30,0),9,0,1)]),
             new Day(2,this.stringToDate('18.05.2019',"dd.MM.yyyy","."),this.stringToDate('20.05.2019',"dd.MM.yyyy","."),this.stringToDate('30.05.2019',"dd.MM.yyyy","."),[new Appointment(1,time.setHours(11,30,0),7,2,2),new Appointment(2,time.setHours(14,30,0),4,2,2),new Appointment(3,time.setHours(21,30,0),9,0,2)]),
             new Day(2,this.stringToDate('18.06.2019',"dd.MM.yyyy","."),this.stringToDate('20.05.2019',"dd.MM.yyyy","."),this.stringToDate('30.05.2019',"dd.MM.yyyy","."),[new Appointment(1,time.setHours(11,30,0),7,2,2),new Appointment(2,time.setHours(14,30,0),4,2,2),new Appointment(3,time.setHours(21,30,0),9,0,2)])
         ];
