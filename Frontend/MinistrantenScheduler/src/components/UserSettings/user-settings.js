@@ -105,6 +105,9 @@ export class UserSettings extends LitElement{
             this.allUser[this.count].emailRe = this.shadowRoot.getElementById('check_email').checked;
         }
         console.log("safe");
+        let root = document.querySelector("ministranten-verwaltung");
+        let components = root.shadowRoot.querySelector('#components');
+        components.innerHTML = `<church-event-component></church-event-component>`;
     }
 
     /***********************************************render*************************************************************/

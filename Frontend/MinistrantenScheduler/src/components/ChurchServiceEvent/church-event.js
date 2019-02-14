@@ -16,7 +16,8 @@ export class ChurchServiceEvent extends LitElement {
             allAppointments:[],
             internalDND: String,
             monthResult: [],
-            partsInApp:Number
+            partsInApp:Number,
+            openNav:Boolean
         }
     }
 
@@ -29,6 +30,7 @@ export class ChurchServiceEvent extends LitElement {
         this.allAppointments = [];
         this.internalDND = 'part';
         this.partsInApp = 0;
+        this.openNav = false;
         this.allParticipants = HtmlService.getAllParticipant();
         this.allDays = HtmlService.getAllDays();
         this.allAppointments = HtmlService.getAllAppointments();
@@ -75,24 +77,42 @@ export class ChurchServiceEvent extends LitElement {
         return months
     }
 
+    /*else {
+    var classes = element.className.split(" ");
+    var i = classes.indexOf("mystyle");
+
+    if (i >= 0)
+      classes.splice(i, 1);
+    else
+      classes.push("mystyle");
+      element.className = classes.join(" ");
+  }*/
 
     navbarMenu() {
         let nav = this.shadowRoot.getElementById('nav'),
             main = this.shadowRoot.getElementById('main');
-
-        //open = !open ? true : false;
-        nav.classList.toggle('menu-active');
-        main.classList.toggle('menu-active');
+        if (!this.openNav) {
+            nav.classList.toggle('menu-active',true);
+            main.classList.toggle('menu-active',true);
+            this.openNav = true;
+        }
+        else if(this.openNav){
+            nav.classList.toggle('menu-active',false);
+            main.classList.toggle('menu-active',false);
+            this.openNav = false;
+        }
         nav.classList.remove('menu-hover');
         main.classList.remove('menu-hover');
     }
 
     navbarHoverOver() {
-        let nav = this.shadowRoot.getElementById('nav'),
-            main = this.shadowRoot.getElementById('main');
-        //nav.addClass('menu-hover');
-        nav.classList.add('menu-hover');
-        main.classList.add('menu-hover');
+        if(!this.openNav) {
+            let nav = this.shadowRoot.getElementById('nav'),
+                main = this.shadowRoot.getElementById('main');
+            //nav.addClass('menu-hover');
+            nav.classList.add('menu-hover');
+            main.classList.add('menu-hover');
+        }
     }
 
     navbarHoverOut() {
@@ -102,21 +122,25 @@ export class ChurchServiceEvent extends LitElement {
         main.classList.remove('menu-hover');
     }
 
+    /*
+    *
+    * Switch zwischen denn Components
+    *
+    * */
+    switchComponent(input) {
+        let root = document.querySelector("ministranten-verwaltung");
+        let components = root.shadowRoot.querySelector('#components');
+        let component = document.createElement(input);
+        components.innerHTML = component.outerHTML;
+    }
+
+
+
+
     /******************************************Render******************************************************************/
     render() {
         $(document).ready(() => {
-            let menu = this.shadowRoot.getElementById('container')
-
-            menu.addEventListener('click',() => this.navbarMenu())
-            /*menu.addEventListener('click', function() {
-                open = !open ? true : false;
-                nav.toggleClass('menu-active');
-                main.toggleClass('menu-active');
-                nav.removeClass('menu-hover');
-                main.removeClass('menu-hover');
-                console.log(open);
-            });*/
-
+            let menu = this.shadowRoot.getElementById('container');
             menu.addEventListener('mouseover',() => this.navbarHoverOver());
             menu.addEventListener('mouseout',() => this.navbarHoverOut());
         });
@@ -130,16 +154,17 @@ export class ChurchServiceEvent extends LitElement {
         
         
         
-        <nav id="nav" class="menu-activea">
-            <h1 id="container">NAVBAR</h1>
+        <nav id="nav" class="menu-activea" @click="${() => this.navbarMenu()}">
+            <h1 id="container">Menü</h1>
             <ul>
-                <li>HOME</li>
-                <li>GALLERY</li>
-                <li>TEAM</li>
-                <li>SERVICES</li>
-                <li>ABOUT</li>
-                <li>WORK</li>
-                <li>FAQ</li>
+                <li @click="${() => this.switchComponent('church-event-component')}"><label>Startseite</label></li>
+                <li @click="${() => this.switchComponent('create-user-component')}"><label>Neuen User anlegen</label></li>
+                <li @click="${() => this.switchComponent('create-church-event-component')}"><label>Neue Messe anlegen</label></li>
+                <li @click="${() => this.switchComponent('account-settings-component')}"><label>Mein Account</label></li>
+                <li @click="${() => this.switchComponent('participant-settings-component')}"><label>Teilnehmer Einstellungen</label></li>
+                <li @click="${() => this.switchComponent('user-settings-component')}"><label>User Einstellungen</label></li>
+                <li @click="${() => this.switchComponent('calendar-settings-component')}"><label>Kalender Einstellungen</label></li>
+                <li @click="${() => this.switchComponent('login-component')}"><label>Abmelden</label></li>
             </ul>
         </nav>
         

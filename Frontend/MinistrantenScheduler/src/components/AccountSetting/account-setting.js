@@ -154,4 +154,4 @@ export class AccountSetting extends LitElement{
         `;
     }
 }
-window.customElements.define('account-setting-component',AccountSetting);
+window.customElements.define('account-settings-component',AccountSetting);

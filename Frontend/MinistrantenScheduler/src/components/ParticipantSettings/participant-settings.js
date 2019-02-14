@@ -60,7 +60,10 @@ export class ParticipantSettings extends LitElement{
             this.allParticipants[this.count].grad = this.shadowRoot.getElementById('grad').selectedOptions[0].innerText;
             this.allParticipants[this.count].userId = this.shadowRoot.getElementById('userName').value;
         }
-        console.log("safe")
+        console.log("safe");
+        let root = document.querySelector("ministranten-verwaltung");
+        let components = root.shadowRoot.querySelector('#components');
+        components.innerHTML = `<church-event-component></church-event-component>`;
     }
 
 
