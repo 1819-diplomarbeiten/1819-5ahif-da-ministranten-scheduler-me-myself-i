@@ -109,7 +109,6 @@ export class ChurchServiceEvent extends LitElement {
         if(!this.openNav) {
             let nav = this.shadowRoot.getElementById('nav'),
                 main = this.shadowRoot.getElementById('main');
-            //nav.addClass('menu-hover');
             nav.classList.add('menu-hover');
             main.classList.add('menu-hover');
         }
@@ -136,7 +135,6 @@ export class ChurchServiceEvent extends LitElement {
 
 
 
-
     /******************************************Render******************************************************************/
     render() {
         $(document).ready(() => {
@@ -152,6 +150,8 @@ export class ChurchServiceEvent extends LitElement {
         <!--===============================================================================================-->     
         <link rel="stylesheet" type="text/css" href="/src/components/ChurchServiceEvent/styles.css">
         
+        <script type="module" src="/node_modules/@google-web-components/google-signin/google-signin.js"></script>
+        
         
         
         <nav id="nav" class="menu-activea" @click="${() => this.navbarMenu()}">
@@ -164,7 +164,9 @@ export class ChurchServiceEvent extends LitElement {
                 <li @click="${() => this.switchComponent('participant-settings-component')}"><label>Teilnehmer Einstellungen</label></li>
                 <li @click="${() => this.switchComponent('user-settings-component')}"><label>User Einstellungen</label></li>
                 <li @click="${() => this.switchComponent('calendar-settings-component')}"><label>Kalender Einstellungen</label></li>
-                <li @click="${() => this.switchComponent('login-component')}"><label>Abmelden</label></li>
+                <google-signin style="width: 90%;padding: 10%;" @google-signed-out="${() => this.switchComponent('login-component')}" 
+                                                client-id="461212305163-j72ri8njlsb7ul03cg5sm3c2qkpkck8a.apps.googleusercontent.com" 
+                                                scopes="https://www.googleapis.com/auth/drive"></google-signin>
             </ul>
         </nav>
         

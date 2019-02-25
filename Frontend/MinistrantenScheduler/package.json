@@ -4,6 +4,7 @@
   "description": "Erleichterung für Ministranten zum Eintragen ihres Unterrichts",
   "main": "ministranten-verwaltung.js",
   "dependencies": {
+    "@google-web-components/google-signin": "github:GoogleWebComponents/google-signin",
     "@polymer/lit-element": "^0.6.3",
     "@shopify/draggable": "^1.0.0-beta.8",
     "bootstrap": "^4.1.3",
