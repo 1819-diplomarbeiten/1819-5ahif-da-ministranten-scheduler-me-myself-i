@@ -11,7 +11,7 @@
 }
 .form-style {
     font-family: arial, sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: white;
     padding: 5px;
     text-align: left;
@@ -20,7 +20,7 @@
 /************************Participant-layout****************/
 .rectangle-Part{
     height: 40px;
-    width: 90%;
+    width: 80%;
     background-color: #856404;
     text-align: center;
     vertical-align: center;
@@ -46,7 +46,7 @@
 }
 .App-style {
     margin: 30px;
-    display: inline-block;
+    display: inline-table;
 }
 .app-horizontal-scrollbar {
     overflow-x: scroll;
@@ -75,7 +75,7 @@
 
 .app-max-size{
     margin-bottom: 10px;
-    max-height: 85vh;
+    max-height: 100%;
 }
 /************************Appointment-layout****************/
 
@@ -85,20 +85,7 @@
     width: 100%;
     height: 2%;
 }
-table,tbody {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    display: block;
-}
-tr {
-    width: 100%;
-    height: 2%;
 
-}
-td {
-    width: 100%;
-}
 label {
     width: auto;
 }
@@ -110,12 +97,11 @@ label {
 .result-style {
     top:0px;
     left: 0px;
-    margin-left: 15px;
-    margin-right: 15px;
     z-index: 0;
 
 }
 .body {
+    height: 100%;
     perspective-origin: 0% 50%;
     perspective: 800px;
     background: #21212d;
@@ -185,20 +171,6 @@ nav {
 
 
 }
-
-/*#main {
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    transform-origin: 0% 50%;
-    background-size: cover;
-}*/
 #main:after {
     content: '';
     display: block;
@@ -229,12 +201,14 @@ nav {
     transform: translateX(1em) rotateY(16deg);
 }
 #main section {
-    position: absolute;
+
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, .5);
+    height: 100%;
+    background-color: white;
+    overflow: hidden;
 }
 
 

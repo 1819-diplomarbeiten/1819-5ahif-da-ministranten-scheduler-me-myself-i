@@ -1,0 +1,9 @@
+.back-reply-button{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 30px;
+    background: url("../Images/reply-all-button.png");
+    background-size: cover;
+}

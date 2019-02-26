@@ -40,7 +40,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translate(10%);
+    top: 0px;
+    left: 0px;
+    padding-left: 30px;
 }
 
 h1,h3{

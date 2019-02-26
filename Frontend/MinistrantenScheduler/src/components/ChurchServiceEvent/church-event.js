@@ -3,6 +3,7 @@ import {HtmlService} from '../../services/HtmlClientService/html-service';
 import {repeat} from "@polymer/lit-element/node_modules/lit-html/directives/repeat.js";
 import {User} from "../Entities/User/user";
 import {Participant} from "../Entities/Participant/participant";
+import {Day} from "../Entities/Day/day";
 
 
 
@@ -17,7 +18,8 @@ export class ChurchServiceEvent extends LitElement {
             internalDND: String,
             monthResult: [],
             partsInApp:Number,
-            openNav:Boolean
+            openNav:Boolean,
+            continueDrag:Boolean
         }
     }
 
@@ -31,6 +33,7 @@ export class ChurchServiceEvent extends LitElement {
         this.internalDND = 'part';
         this.partsInApp = 0;
         this.openNav = false;
+        this.continueDrag = false;
         this.allParticipants = HtmlService.getAllParticipant();
         this.allDays = HtmlService.getAllDays();
         this.allAppointments = HtmlService.getAllAppointments();
@@ -48,11 +51,20 @@ export class ChurchServiceEvent extends LitElement {
         event.dataTransfer.setData(this.internalDND, item.participantId);
     }
 
-    dragContinueHandler(event) {
+    dragContinueHandler(event,dayInd,appInd,item) {
         console.log("neu")
+        event.dataTransfer.setData(this.internalDND,item.participantId);
+        this.allDays[dayInd].appointments[appInd].removeParticipant(item);
+        //this.partsInApp--;
+        this.continueDrag = true;
+        console.log(item)
     }
 
     dropHandler(event, dayInd, appInd) {
+        if (this.continueDrag == true) {
+            this.partsInApp--;
+            this.continueDrag = false;
+        }
         let partId = event.dataTransfer.getData(this.internalDND);
         this.allDays[dayInd].appointments[appInd].addParticipants(this.allParticipants.filter(p => p.participantId == partId).pop())
         this.partsInApp++;
@@ -76,17 +88,6 @@ export class ChurchServiceEvent extends LitElement {
         }
         return months
     }
-
-    /*else {
-    var classes = element.className.split(" ");
-    var i = classes.indexOf("mystyle");
-
-    if (i >= 0)
-      classes.splice(i, 1);
-    else
-      classes.push("mystyle");
-      element.className = classes.join(" ");
-  }*/
 
     navbarMenu() {
         let nav = this.shadowRoot.getElementById('nav'),
@@ -199,7 +200,7 @@ export class ChurchServiceEvent extends LitElement {
                                 
                                 <div id="${months}">
                                     <div class="app-horizontal row">
-                                        <label>${months}</label>
+                                        <label style="font-size: 30px;text-transform: uppercase;font-weight: bold">${Day.toMonths(months)}</label>
                                         <div class="app-horizontal-scrollbar">
                                             ${repeat(this.allDays.filter(p => p.dayDate.getMonth() + 1 == months), (days) => html`
                                                                               <div class="rectangle-Appo rconers App-style">
@@ -209,13 +210,17 @@ export class ChurchServiceEvent extends LitElement {
                                                                                   
                                                                                   ${repeat(days.appointments,(app) => html`                                                                             
                                                                                       <div class="Appointment-Inbox" id="App${app.appointmentId}" @dragover="${(event) => event.preventDefault()}" 
-                                                                                            @dragenter="${(event) => event.preventDefault()}"  @drop="${(event) => this.dropHandler(event, this.allDays.indexOf(days), days.appointments.indexOf(app))}"> 
+                                                                                            @dragenter="${(event) => event.preventDefault()}"  
+                                                                                            @drop="${(event) => this.dropHandler(event, this.allDays.indexOf(days), days.appointments.indexOf(app))}"> 
+                                                                                            
                                                                                             ${repeat(app.participants,(parts) => html`
-                                                                                                                                    <tr draggable="true" @dragstart="${(event) => this.dragContinueHandler(event)}">
-                                                                                                                                        <td class="rectangle-Part rconers">
+                                                                                                                                    <div style="padding-left: 10%;" draggable="true" 
+                                                                                                                                    @dragstart="${(event) => this.dragContinueHandler(event,this.allDays.indexOf(days), days.appointments.indexOf(app),parts)}">
+                                                                                                                                        <div class="rectangle-Part rconers">
                                                                                                                                             <label class="form-style">${parts.toNameString()}</label>
-                                                                                                                                        </td>
-                                                                                                                                    </tr>
+                                                                                                                                        </div>
+                                                                                                                                    </div>
+                                                                                                                                    
                                                                                             
                                                                                             `)}
                                                                                           

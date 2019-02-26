@@ -48,7 +48,7 @@ export class Login extends LitElement {
                                                 client-id="461212305163-j72ri8njlsb7ul03cg5sm3c2qkpkck8a.apps.googleusercontent.com" 
                                                 scopes="https://www.googleapis.com/auth/drive"></google-signin>
                                 <br>
-                                <a href="#">HTBLA Leonding</a>                         
+                                <a href="https://www.htl-leonding.at/index.php?id=1561">HTBLA Leonding</a>                         
                             </div>
                         </div>
 		            </form>

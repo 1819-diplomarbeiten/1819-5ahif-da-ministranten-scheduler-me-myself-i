@@ -110,62 +110,64 @@ export class CreateNewChurchEvent extends LitElement{
         <!--===============================================================================================-->
         <link rel="stylesheet" href="/src/components/CreateNewChurchEvent/styles.css">
         
-        <div class="form-style">      
-            <div class="col-md-9">     
-                <h1>Neue Messe anlegen</h1>           
-                <div class=" row">                
-                    <div class="col-md-3">
-                        <label>Datum</label>
-                        <input id="datetime" type="date" class="form-control">
+        <div style="padding-left: 15%;">
+            <div class="form-style">      
+                <div class="col-md-9">     
+                    <h1>Neue Messe anlegen</h1>           
+                    <div class=" row">                
+                        <div class="col-md-3">
+                            <label>Datum</label>
+                            <input id="datetime" type="date" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Verfügbar ab</label>
+                            <input id="available" type="date" class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label>Frist bis</label>
+                            <input id="deadline" type="date" class="form-control">
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <label>Verfügbar ab</label>
-                        <input id="available" type="date" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                        <label>Frist bis</label>
-                        <input id="deadline" type="date" class="form-control">
-                    </div>
-                </div>
-                <div id="addAppointment">
-                    ${repeat(this.getAppointments,(item) => html`<hr class="row" style="width: 78%;">
-                                                                <div>
-                                                                    <h3>Termin</h3>
-                                                                    <div class="row">
-                                                                        <br>
-                                                                        <div class="col-sm-3">
-                                                                            <label>Uhrzeit</label>
-                                                                            <input id="time${item.appointmentId}" type="time" class="form-control">
+                    <div id="addAppointment">
+                        ${repeat(this.getAppointments,(item) => html`<hr class="row" style="width: 78%;">
+                                                                    <div>
+                                                                        <h3>Termin</h3>
+                                                                        <div class="row">
+                                                                            <br>
+                                                                            <div class="col-sm-3">
+                                                                                <label>Uhrzeit</label>
+                                                                                <input id="time${item.appointmentId}" type="time" class="form-control">
+                                                                            </div>
+                                                                            <div class="col-sm-3">
+                                                                                <label>min. Ministranten</label>
+                                                                                <input id="minMin${item.appointmentId}" type="number" class="form-control">
+                                                                            </div> 
+                                                                            <div class="col-sm-3">
+                                                                                <label>min. Lektoren</label>
+                                                                                <input id="minLec${item.appointmentId}" type="number" class="form-control">
+                                                                            </div> 
                                                                         </div>
-                                                                        <div class="col-sm-3">
-                                                                            <label>min. Ministranten</label>
-                                                                            <input id="minMin${item.appointmentId}" type="number" class="form-control">
-                                                                        </div> 
-                                                                        <div class="col-sm-3">
-                                                                            <label>min. Lektoren</label>
-                                                                            <input id="minLec${item.appointmentId}" type="number" class="form-control">
-                                                                        </div> 
                                                                     </div>
-                                                                </div>
-                                                                
-                    `)}
-                
-                
-                
-                </div>
-                <hr class="row" style="width: 78%;">
-                <div class="col-md-8" align="center">
-                    <button class="circle-plus" @click="${() => this.addEventChurch()}"></button>
-                    <button class="circle-minus" @click="${() => this.deleteEventChurch()}"></button>
-                    <br>
-                </div>
-                <hr class="row" style="width: 78%;">
-                <div class="col-md-8 button-print row"> 
-                    <div class="button-stack col-md-4">
-                        <button class="form-control text-color-back-button" @click="${() => this.backComponent()}">Zurück</button>
+                                                                    
+                        `)}
+                    
+                    
+                    
                     </div>
-                    <div class="button-stack col-md-4">
-                        <button class="form-control text-color-button" @click="${() => this.safeDay()}">Speichern</button>
+                    <hr class="row" style="width: 78%;">
+                    <div class="col-md-8" align="center">
+                        <button class="circle-plus" @click="${() => this.addEventChurch()}"></button>
+                        <button class="circle-minus" @click="${() => this.deleteEventChurch()}"></button>
+                        <br>
+                    </div>
+                    <hr class="row" style="width: 78%;">
+                    <div class="col-md-8 button-print row"> 
+                        <div class="button-stack col-md-4">
+                            <button class="form-control text-color-back-button" @click="${() => this.backComponent()}">Zurück</button>
+                        </div>
+                        <div class="button-stack col-md-4">
+                            <button class="form-control text-color-button" @click="${() => this.safeDay()}">Speichern</button>
+                        </div>
                     </div>
                 </div>
             </div>
