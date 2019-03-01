@@ -25,6 +25,9 @@ export class Day {
         return "" + this.dayDate.getDate() + "-" + (this.dayDate.getMonth()+1) + "-" + this.dayDate.getFullYear() + "";
     }
 
+    static toDate(item) {
+        return "" + item.getDate() + "-" + (item.getMonth()+1) + "-" + item.getFullYear() + "";
+    }
     static toMonths(input) {
         let allMonths = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
         return allMonths.slice(input-1,input);

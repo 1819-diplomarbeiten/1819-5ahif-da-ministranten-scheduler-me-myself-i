@@ -1,3 +1,42 @@
+.fixed_header{
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.fixed_header tbody{
+    display: block;
+    width: 100%;
+    overflow: auto;
+    height: 400px;
+
+}
+
+.fixed_header thead tr {
+    display: inline-table;
+    width: 100%;
+}
+
+.fixed_header thead {
+    background: black;
+    color:#fff;
+}
+
+.fixed_header th, .fixed_header td {
+    width: 5%;
+    text-align: -webkit-left;
+}
+table {
+    alignment: center;
+}
+h1 {
+    padding-top: 20px;
+    padding-left: 40%;
+
+}
+/******************Änderungen*******************/
+
+
+
 .back-reply-button{
     position: absolute;
     top: 20px;
@@ -6,4 +45,15 @@
     height: 30px;
     background: url("../Images/reply-all-button.png");
     background-size: cover;
+}
+.format-style {
+    padding-top: 10%;
+    left: 3%;
+}
+
+.button-format {
+    float: right;
+}
+.button-style {
+    padding-top: 3%;
 }

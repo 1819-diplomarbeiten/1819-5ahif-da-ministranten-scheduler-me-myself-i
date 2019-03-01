@@ -7,7 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8060bf4a-b3b3-421f-9618-f79857611870" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/ministranten-verwaltung.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/ministranten-verwaltung.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/CalendarSettings/calendar-settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/CalendarSettings/calendar-settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/CalendarSettings/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/CalendarSettings/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/Entities/Appointment/appointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/Entities/Appointment/appointment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/Entities/Day/day.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../Frontend/MinistrantenScheduler/src/components/Entities/Day/day.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,51 +42,8 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="MiniServer" type="feb32156:DbDataSourceImpl" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MiniServer" type="feb32156:DbDataSourceImpl" />
-        <item name="APP: schema" type="6aa84934:DerbyImplModel$Schema" />
-      </path>
     </expand>
     <select />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-91655925">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.19" value="1" />
-          <entry key="project.open.time.21" value="1" />
-          <entry key="project.opened" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="PARTICIPANT_DATA" value="1" />
-          <entry key="SCHEMA:APP" value="1" />
-          <entry key="java" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="Database Element" value="1" />
-          <entry key="JAVA" value="1" />
-          <entry key="UML" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="MinistrantenServer" />
@@ -99,10 +65,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Appointment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
+            <state relative-caret-position="323">
+              <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1162#1175#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,11 +96,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Grad.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
               <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Day.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -182,12 +161,6 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -209,6 +182,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -260,30 +234,11 @@
               <item name="htl" type="462c0819:PsiDirectoryNode" />
               <item name="entities" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="MinistrantenServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="htl" type="462c0819:PsiDirectoryNode" />
-              <item name="facade" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MinistrantenServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Server" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="htl" type="462c0819:PsiDirectoryNode" />
-              <item name="init" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,7 +289,7 @@
         <option name="USERNAME" value="" />
         <option name="PASSWORD" value="" />
       </server-settings>
-      <predefined_log_file id="JBoss" enabled="true" />
+      <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="36489" />
       </RunnerSettings>
@@ -402,7 +357,7 @@
         <option name="USERNAME" value="" />
         <option name="PASSWORD" value="" />
       </server-settings>
-      <predefined_log_file id="JBoss" enabled="true" />
+      <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="36489" />
       </RunnerSettings>
@@ -466,7 +421,7 @@
           <host-id />
         </data>
       </server-settings>
-      <predefined_log_file id="JBoss" enabled="true" />
+      <predefined_log_file enabled="true" id="JBoss" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="37019" />
         <option name="LOCAL" value="false" />
@@ -476,12 +431,13 @@
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
+    <configuration default="true" type="TestNG">
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <properties />
       <listeners />
@@ -512,6 +468,7 @@
       <workItem from="1542368759975" duration="597000" />
       <workItem from="1543248695084" duration="694000" />
       <workItem from="1544977441211" duration="437000" />
+      <workItem from="1551424683438" duration="2027000" />
     </task>
     <task id="LOCAL-00001" summary="Entity erstellt nächster Schritt Assoziationen vergeben">
       <created>1539442838213</created>
@@ -531,7 +488,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48418000" />
+    <option name="totallyTimeSpent" value="50445000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -544,8 +501,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49666667" visible="true" weight="0.12686567" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49666667" visible="true" weight="0.12793177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" sideWeight="0.50333333" side_tool="true" weight="0.12166489" />
       <window_info id="Designer" order="3" />
@@ -570,7 +528,8 @@
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32922733" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.32922733" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32922733" />
-      <window_info anchor="bottom" id="Terminal" order="15" visible="true" weight="0.32703003" />
+      <window_info anchor="bottom" id="Terminal" order="15" visible="true" weight="0.26555556" />
+      <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -588,9 +547,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Entity erstellt nächster Schritt Assoziationen vergeben" />
@@ -678,16 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Day.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/facade/AppointmentFacade.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -759,16 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Appointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/facade/DayFacade.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -779,13 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/init/InitBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -793,10 +722,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Grad.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Appointment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="34" column="59" selection-start-line="34" selection-start-column="59" selection-end-line="34" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1162#1175#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/at/htl/entities/Day.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

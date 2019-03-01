@@ -6,7 +6,7 @@ export class Appointment {
     static get properties() {
         return {
             appointmentId:Number,
-            time:Date,
+            time:String,
             required_Mini:Number,
             required_Lec:Number,
             dayId:Number,
@@ -15,7 +15,6 @@ export class Appointment {
     }
 
     constructor(appointmentId,time,required_Mini,required_Lec,dayId,participants) {
-        //super();
         this.appointmentId = appointmentId;
         this.time = time;
         this.required_Mini = required_Mini;
